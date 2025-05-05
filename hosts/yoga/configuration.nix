@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   imports =
@@ -84,23 +84,25 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kizzy = {
     isNormalUser = true;
     description = "Kizzy";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      vim
-      git
-    #  thunderbird
-    ];
+    shell = pkgs.bash;
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
+  
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "kizzy" = import ./home-manager/home.nix;
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -108,8 +110,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    # Since default desktop environment is Plasma
+    kdePackages.kate
+
+    # Utils
+    vim 
+    wget
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
