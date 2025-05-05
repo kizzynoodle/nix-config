@@ -41,7 +41,7 @@
     LC_NUMERIC = "es_ES.UTF-8";
     LC_PAPER = "es_ES.UTF-8";
     LC_TELEPHONE = "es_ES.UTF-8";
-    LC_TIME = "es_ES.UTF-8";
+    LC_TIME = "es_ES.UTF-8"; 
   };
 
   # Enable experimental features (such as flakes, home manager, etc.)
@@ -54,8 +54,9 @@
   # Themeing
   stylix = {
     enable = true;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-darhardk-hard.yaml";
     image = ./wallpaper.png;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    polarity = "dark";
   };
 
   # Enable the KDE Plasma Desktop Environment.
