@@ -51,6 +51,13 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
+  # Themeing
+  stylix = {
+    enable = true;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-darhardk-hard.yaml";
+    image = ./wallpaper.jpg;
+  };
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -102,6 +109,7 @@
     users = {
       "kizzy" = import ./../../home-manager/home.nix;
     };
+    backupFileExtension = "backup";
   };
 
   # Allow unfree packages

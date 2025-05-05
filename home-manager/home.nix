@@ -33,6 +33,7 @@
 
     # Desktop utils
     kitty
+    fastfetch
 
     # Programming
     texlive.combined.scheme-full
