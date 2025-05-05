@@ -55,7 +55,7 @@
   stylix = {
     enable = true;
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-darhardk-hard.yaml";
-    image = ./wallpaper.jpg;
+    image = ./wallpaper.png;
   };
 
   # Enable the KDE Plasma Desktop Environment.
@@ -120,6 +120,9 @@
   environment.systemPackages = with pkgs; [
     # Since default desktop environment is Plasma
     kdePackages.kate
+
+    # Install at system level
+    home-manager
 
     # Utils
     vim 
