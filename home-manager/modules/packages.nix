@@ -16,9 +16,10 @@
     discord
     telegram-desktop
 
-    # Desktop utils
+    # Terminal utils
     kitty
     fastfetch
+    eza
 
     # Programming
     texlive.combined.scheme-full
