@@ -3,6 +3,6 @@
 {
   imports = 
   [
-    ./modules/stylix.nix
+    ./modules/default.nix
   ];
 }
