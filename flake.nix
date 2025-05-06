@@ -23,6 +23,7 @@
       user = "kizzy";
       hosts = [
         { hostname = "yoga"; stateVersion = "24.11"; }
+        { hostname = "desktop"; stateVersion = "24.11"; }
       ];
 
       makeSystem = { hostname, stateVersion }: 
