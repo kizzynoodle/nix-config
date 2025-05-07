@@ -21,6 +21,11 @@
     fastfetch
     eza
 
+    # Media
+    lutris
+    steam
+    spotify
+
     # Programming
     texlive.combined.scheme-full
 

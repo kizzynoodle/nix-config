@@ -20,6 +20,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Since default desktop environment is Plasma
+    # TODO: Move to user package instead of environment package
     kdePackages.kate
 
     # Install at system level
@@ -29,5 +30,10 @@
     vim 
     wget
     git
+
+    # Disk stuff
+    gparted
+    exfat
+    exfatprogs
   ];
 }
