@@ -1,6 +1,6 @@
 # home.nix
 # Home manager configuration, import modules, set up basics
-{ config, pkgs, user, homeStateVersion, ... }:
+{ homeStateVersion, user, ... }:
 
 {
   # Import modules
@@ -10,11 +10,11 @@
 
   home = {
     # Paths managed by home manager
-    username = "${user}";
+    username = user;
     homeDirectory = "/home/${user}";
 
     # Home manager release configuration was written in
-    stateVersion = "${homeStateVersion}";
+    stateVersion = homeStateVersion;
   };
 
   # Let Home Manager install and manage itself.

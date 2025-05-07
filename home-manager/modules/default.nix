@@ -6,6 +6,7 @@
     # Specific package modules
     ./kitty.nix
     ./git.nix
+    ./nixvim.nix
     ./shell.nix
     ./stylix.nix
   ];
