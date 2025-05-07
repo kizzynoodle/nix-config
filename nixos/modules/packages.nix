@@ -35,5 +35,10 @@
     gparted
     exfat
     exfatprogs
+
+    # Steam stuff
+    # TODO: Make it only local for desktop config
+    protonup
+    dxvk
   ];
 }

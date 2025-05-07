@@ -23,7 +23,6 @@
 
     # Media
     lutris
-    steam
     spotify
 
     # Programming
