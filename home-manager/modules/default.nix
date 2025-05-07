@@ -4,7 +4,9 @@
     ./packages.nix
 
     # Specific package modules
+    ./kitty.nix
     ./git.nix
     ./shell.nix
+    ./stylix.nix
   ];
 }
