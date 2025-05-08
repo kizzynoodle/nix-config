@@ -11,17 +11,23 @@
   # Fish
   programs.fish = {
     enable = true;
+
+    # Enable starship at launch
     interactiveShellInit = ''
       # Start starship
       starship init fish | source
+
+      # viMode
+      fish_vi_key_bindings
     '';
+
+    # Shell alises
     shellAliases = {
       ls = "eza --icons";
     };
   };
 
   # Enable starship
-  # TODO: Add auto completion and other shenanigans
   programs.starship = {
     enable = true;
     settings = {
