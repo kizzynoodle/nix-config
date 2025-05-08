@@ -29,9 +29,9 @@
 #    };
 #
 #    # Set name and package for gtk icon theme
-#    iconTheme = {
-#      package = lib.mkForce pkgs.papirus-icon-theme;
-#      name = lib.mkForce "Papirus";
-#    };
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus";
+    };
   };
 }
