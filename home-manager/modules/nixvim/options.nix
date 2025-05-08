@@ -13,9 +13,17 @@
     colorschemes.gruvbox.enable = true;
     plugins.lualine.enable = true;
 
-    globalOpts = {
-      number = true;
-      relativenumber = true;
+    # Set global options
+    globals = {
+      mapleader = "º";
+    };
+
+    # Set local options
+    opts = {
+      number = true; # Show line numbers
+      relativenumber = true; # Show relative line numbers
+
+      shiftwidth = 2; # Tab width should be 2
     };
   };
 }
