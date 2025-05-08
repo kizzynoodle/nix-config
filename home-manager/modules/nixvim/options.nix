@@ -28,6 +28,49 @@
       expandtab = true;
       shiftwidth = 2;
       tabstop = 2;
+
+      # Enable more colors
+      termguicolors = true;
+
+      # Better completion experience
+      completeopt = [ "menuone" "noselect" "noinsert" ];
+
+      # Always show sign column (so text isn't shifted)
+      signcolumn = "yes";
+
+      # Enable mouse
+      mouse = "a";
+
+      # Search
+      ignorecase = true;
+      smartcase = true;
+
+      # Configure how new splits should be opened
+      splitright = true;
+      splitbelow = true;
+
+      # Raw lua code, non visible chars
+      list = true;
+      listchars.__raw = "{ tab = '» ', trail = '·', nbsp = '␣' }";
+
+      # Set encoding
+      encoding = "utf-8";
+      fileencoding = "utf-8";
+
+      # Save undo history
+      undofile = true;
+      swapfile = true;
+      backup = false;
+      autoread = true;
+
+      # Highlight the current line for cursor
+      cursorline = true;
+
+      # Show line and column when searching
+      ruler = true;
+
+      # Start scrolling when cursor is X lines away from top/bottom
+      scrolloff = 5;
     };
   };
 }
