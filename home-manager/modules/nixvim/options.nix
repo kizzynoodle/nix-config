@@ -20,10 +20,14 @@
 
     # Set local options
     opts = {
-      number = true; # Show line numbers
-      relativenumber = true; # Show relative line numbers
+      # Show relative line numbers
+      number = true;
+      relativenumber = true;
 
-      shiftwidth = 2; # Tab width should be 2
+      # Set tab to 2 spaces
+      expandtab = true;
+      shiftwidth = 2;
+      tabstop = 2;
     };
   };
 }
