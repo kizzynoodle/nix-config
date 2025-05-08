@@ -3,6 +3,6 @@
 {
   imports = [
     # Import this first (to enable nixvim)
-    ./settings.nix
+    ./options.nix
   ];
 }
