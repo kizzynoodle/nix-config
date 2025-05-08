@@ -18,6 +18,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
@@ -47,8 +52,7 @@
       };
     in
     {
-    # use "nixos", or your hostname as the name of the configuration
-    # it's a better practice than "default" shown in the video
+
     nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
       configs // {
         "${host.hostname}" = makeSystem {

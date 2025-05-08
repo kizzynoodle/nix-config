@@ -23,33 +23,6 @@
 
   networking.hostName = hostname; # Define your hostname.
 
-  # {{{ DRIVES
-
-  fileSystems."/home/${user}/Games" = {
-    # device = "/dev/disk/by-uuid/EA9F-F154";
-    device = "/dev/nvme0n1p1";
-    fsType = "exfat";
-    options = [
-      "defaults"
-      "users" # Mount and dismount user perm
-      #"noatime"
-      #"nodiratime"
-      "nofail" # No system fail if driver doesn't mount
-      "uid=1000"
-      "gid=100"
-      "utf8"
-      #"dmask=027"
-      #"fmask=007"
-      "rw"
-      "exec"
-      "umask=000"
-      "x-gvfs-show" # Show disk in file explorer
-      "X-mount.mkdir" # Make directory if it doesn't exist
-    ];
-  };
-
-  # }}}
-
   # {{{ NVIDIA
 
   nixpkgs.config.nvidia.acceptLisence = true;
