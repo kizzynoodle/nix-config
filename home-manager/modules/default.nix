@@ -4,9 +4,9 @@
     ./packages.nix
 
     # Specific package modules
-    ./nixvim/default.nix
     ./kitty.nix
     ./git.nix
+    ./nvf.nix
     ./shell.nix
     ./stylix.nix
   ];

@@ -14,8 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    nvf = {
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,8 +25,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: 
-    let
+  outputs = { self, nixpkgs, nvf, ... }@inputs: 
+  let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       homeStateVersion = "24.11";
@@ -47,12 +47,10 @@
 	  ./hosts/${hostname}/configuration.nix
 	  inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
-	  inputs.nixvim.nixosModules.nixvim
 	];
       };
-    in
-    {
-
+  in
+  {
     nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
       configs // {
         "${host.hostname}" = makeSystem {

@@ -14,7 +14,7 @@
   programs.firefox.enable = true;
 
   # Install nixvim
-  programs.nixvim.enable = true;
+  programs.neovim.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
