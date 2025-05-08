@@ -7,7 +7,6 @@
     ./nixvim/default.nix
     ./kitty.nix
     ./git.nix
-    ./nixvim.nix
     ./shell.nix
     ./stylix.nix
   ];
