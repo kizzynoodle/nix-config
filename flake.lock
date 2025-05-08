@@ -355,19 +355,11 @@
         "nuschtosSearch": "nuschtosSearch"
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1746650585,
-        "narHash": "sha256-9WZtcSn1/UkYK4UNXkcLCnVR7aIVI83VweqVlCf06OA=",
-        "owner": "nix-community",
-        "repo": "nixvim",
-        "rev": "6597afe2097ba07fdf515a541a2a02a7e06768cd",
-=======
         "lastModified": 1746625905,
         "narHash": "sha256-El/fOZAhTDJRsPN5dro9F3cNHyclk00Acjl1nVQAEDI=",
         "owner": "nix-community",
         "repo": "nixvim",
         "rev": "5c52e8f9e438b6850f2c7a6e4bf3f967a3a699fd",
->>>>>>> c6c24cbdc59b4bfda356cd27b77acd665893da27
         "type": "github"
       },
       "original": {
