@@ -10,8 +10,9 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    # Set colorscheme
+    # TODO: Let stylix manage color scheme
     colorschemes.gruvbox.enable = true;
-    plugins.lualine.enable = true;
 
     # Set global options
     globals = {

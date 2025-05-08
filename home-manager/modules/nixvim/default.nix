@@ -6,6 +6,7 @@
     ./options.nix
 
     # Import other options after
+    ./plugins.nix
     ./keymaps.nix
   ];
 }
