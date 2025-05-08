@@ -13,6 +13,11 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
@@ -49,14 +54,5 @@
 	  inherit (host) hostname stateVersion;
       };
     }) {} hosts;
-
-#    nixosConfigurations.yoga = nixpkgs.lib.nixosSystem {
-#      specialArgs = { inherit inputs;};
-#      modules = [
-#        ./hosts/yoga/configuration.nix
-#	inputs.home-manager.nixosModules.default
-#        inputs.stylix.nixosModules.stylix
-#      ];
-#    };
   };
 }

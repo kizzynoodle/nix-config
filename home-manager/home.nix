@@ -1,10 +1,11 @@
 # home.nix
 # Home manager configuration, import modules, set up basics
-{ config, pkgs, user, homeStateVersion, ... }:
+{ inputs, config, pkgs, user, homeStateVersion, ... }:
 
 {
   # Import modules
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
     ./modules/default.nix
   ];
 

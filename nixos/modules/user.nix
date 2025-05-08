@@ -2,6 +2,7 @@
 # User module for system, further elaborated in home manager module
 # TODO: Use user module to pass specific user to each host
 { inputs, user, homeStateVersion, pkgs, ... }:
+
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {

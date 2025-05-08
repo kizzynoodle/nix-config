@@ -4,6 +4,7 @@
     ./packages.nix
 
     # Specific package modules
+    ./nixvim/default.nix
     ./kitty.nix
     ./git.nix
     ./shell.nix

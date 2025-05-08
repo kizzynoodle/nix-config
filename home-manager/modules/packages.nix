@@ -1,13 +1,14 @@
 # packages.nix
 # Kizzy user home manager packages
 { pkgs, ... }:
+
 {
   nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     
     # Office
     libreoffice
-    neovim
     megasync
     xournalpp
     zathura
