@@ -48,7 +48,9 @@
     }))
     mako
     libnotify
-    rofi-wayland
+    wofi
     hyprpaper
+    pavucontrol
+    qjackctl
   ];
 }

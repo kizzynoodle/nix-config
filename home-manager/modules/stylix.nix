@@ -1,12 +1,15 @@
 # stylix.nix
 # Themeing home manager options
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   stylix.targets = {
     kitty.enable = true;
     hyprland.enable = true;
     hyprpaper.enable = true;
+    mako.enable = true;
+    waybar.enable = true;
+    wofi.enable = true;
   };
 
   # TODO: Figure out how to customize qt and gtk through stylix

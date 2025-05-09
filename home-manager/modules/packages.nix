@@ -21,6 +21,7 @@
     kitty
     fastfetch
     eza
+    btop
 
     # Media
     lutris
