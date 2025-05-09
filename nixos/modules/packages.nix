@@ -36,12 +36,18 @@
 
     # Disk stuff
     gparted
-    exfat
-    exfatprogs
 
     # Steam stuff
     # TODO: Make it only local for desktop config
     protonup
-    dxvk
+    # dxvk
+
+    # Environment system packages
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    }))
+    mako
+    libnotify
+    rofi-wayland
   ];
 }

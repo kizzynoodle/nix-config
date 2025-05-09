@@ -54,6 +54,18 @@
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
+  environment.sessionVariables = {
+    # Cursor invisibility problems
+    WRL_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
+  # Hyprland tweaks for Nvidia
+  programs.hyprland = {
+    xwayland.enable = true;
+  };
+
   # }}}
 
   system.stateVersion = stateVersion; # Did you read the comment?
