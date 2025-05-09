@@ -15,6 +15,7 @@
     
     # Communication
     discord
+    vesktop
     telegram-desktop
 
     # Terminal utils

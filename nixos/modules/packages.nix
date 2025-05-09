@@ -42,7 +42,7 @@
     protonup
     # dxvk
 
-    # Environment system packages
+    # Desktop stuff
     (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     }))
@@ -50,7 +50,10 @@
     libnotify
     wofi
     hyprpaper
+
+    # Sound stuff
     pavucontrol
     qjackctl
+    mpv
   ];
 }
