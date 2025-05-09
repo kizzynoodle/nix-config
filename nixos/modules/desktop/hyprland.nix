@@ -1,6 +1,6 @@
 # hyprland.nix
 # Enable hyprland and use git repo package for it
-{ pkgs, inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   programs.hyprland = {

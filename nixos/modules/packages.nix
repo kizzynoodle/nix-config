@@ -49,5 +49,6 @@
     mako
     libnotify
     rofi-wayland
+    hyprpaper
   ];
 }

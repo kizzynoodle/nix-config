@@ -3,7 +3,11 @@
 { lib, pkgs, ... }:
 
 {
-  stylix.targets.kitty.enable = true;
+  stylix.targets = {
+    kitty.enable = true;
+    hyprland.enable = true;
+    hyprpaper.enable = true;
+  };
 
   # TODO: Figure out how to customize qt and gtk through stylix
 

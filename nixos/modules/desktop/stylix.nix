@@ -22,6 +22,13 @@
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       emoji = config.stylix.fonts.monospace;
+
+      sizes = {
+        applications = 12;
+        terminal = 10;
+        popups = 10;
+        desktop = 10;
+      };
     };
 
     # Cursor
