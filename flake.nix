@@ -1,3 +1,5 @@
+# flake.nix
+# NixOS and Home Manager configuration flake
 {
   description = "Nixos config flake";
 
@@ -14,8 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
+    #    nvf = {
+    #      url = "github:notashelf/nvf";
+    #      inputs.nixpkgs.follows = "nixpkgs";
+    #    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,7 +32,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nvf, ... }@inputs: 
+  outputs = { self, nixpkgs, nixvim, ... }@inputs: 
   let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -47,6 +54,7 @@
 	  ./hosts/${hostname}/configuration.nix
 	  inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
+	  inputs.nixvim.nixosModules.nixvim
 	];
       };
   in

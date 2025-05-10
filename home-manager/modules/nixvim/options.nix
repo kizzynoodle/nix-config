@@ -52,7 +52,14 @@
 
       # Raw lua code, non visible chars
       list = true;
-      listchars.__raw = "{ tab = '» ', trail = '·', nbsp = '␣' }";
+      listchars.__raw = ''{ 
+        tab = '» ', 
+        nbsp = '␣',
+        trail = '·', 
+        extends = '⟩',
+        precedes = '⟨'
+      }'';
+      showbreak = "↪";
 
       # Set encoding
       encoding = "utf-8";

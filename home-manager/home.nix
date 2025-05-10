@@ -5,7 +5,8 @@
 {
   # Import modules
   imports = [
-    inputs.nvf.homeManagerModules.default
+    # inputs.nvf.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
     ./modules/default.nix
   ];
 
