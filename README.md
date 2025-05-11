@@ -27,6 +27,12 @@ NixOS system and home manager user configuration managed through flakes.
 
 ## Hyprland
 
+Move following configs to Home Manager directory:
+- [ ] Waybar
+- [ ] Mako
+- [ ] Wofi
+
+After configs have been moved:
 - [x] Move Hyprland setup to Nix config
 - [ ] Move Waybar setup to Nix config
 - [ ] Move Mako setup to Nix config
