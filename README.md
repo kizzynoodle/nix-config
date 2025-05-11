@@ -2,11 +2,36 @@
 
 NixOS system and home manager user configuration managed through flakes.
 
-## TODO
+## General
 
 - [x] Add host and user configuration module
 - [x] Install NixOS on desktop and test new configuration
 - [x] Replace desktop host files with propper ones
-- [ ] Configure Nixvim
+- [x] Configure Nixvim
 - [x] Find and configure replacement shell for bash
 - [x] Create Pipewire module for NixOS
+
+## Nixvim
+
+- [ ] CMP autocomplete
+- [ ] Snippet
+- [ ] Tree menu
+- [ ] Toggle terminal
+- [ ] Remove color from side bar
+- [ ] Telescope 
+- [x] Nix LSP
+- [ ] Latex LSP
+- [ ] C++ LSP
+- [ ] Highlight current scope with treesitter and indent blankline
+
+## Hyprland
+
+- [ ] Move Hyprland setup to Nix config
+- [ ] Move Waybar setup to Nix config
+- [ ] Move Mako setup to Nix config
+- [ ] Install and setup screenshot manager
+
+## Bugs
+
+- [ ] Fix Discord notification issue
+- [ ] Fix Vesktop having no sound

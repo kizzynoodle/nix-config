@@ -30,7 +30,7 @@
     home-manager
 
     # Utils
-    vim 
+    vim
     wget
     git
 
@@ -50,6 +50,7 @@
     libnotify
     wofi
     hyprpaper
+    hyprshot
 
     # Sound stuff
     pavucontrol

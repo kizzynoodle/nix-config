@@ -12,5 +12,8 @@
     # Nixvim or NVF
     # ./nvf.nix
     ./nixvim/default.nix
+
+    # Desktop modules
+    ./desktop/default.nix
   ];
 }

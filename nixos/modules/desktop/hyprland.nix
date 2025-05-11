@@ -3,6 +3,7 @@
 { inputs, pkgs, ... }:
 
 {
+  # wayland.windowManager.hyprland = {
   programs.hyprland = {
     # Enable hyprland as a NixOS module
     enable = true;
@@ -12,9 +13,4 @@
   # Screen sharing, folder navigation, etc.
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # TODO: Install the following programs
-  # - A status bar
-  # - A notification daemon
-  # - A search daemon for programs (like rofi)
 }

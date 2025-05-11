@@ -2,23 +2,36 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, stateVersion, hostname, user, ... }:
+{ config, pkgs, stateVersion, hostname, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      # Specific modules
-      ./steam.nix
+    # Specific modules
+    ./steam.nix
 
-      # Generic modules
-      ../../nixos/default.nix
-    ];
+    # Generic modules
+    ../../nixos/default.nix
+  ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+
+    # Grub
+    grub = {
+      enable = true;
+      useOSProber = true;
+      # device = "/dev/sda";
+      device = "nodev";
+      efiSupport = true;
+    };
+  };
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
 
   networking.hostName = hostname; # Define your hostname.
@@ -27,31 +40,46 @@
 
   nixpkgs.config.nvidia.acceptLisence = true;
 
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
   # Set Nvidia as primary video driver
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # Some settings for nvidia
-  hardware.nvidia = {
-    modesetting.enable = true;
+  hardware = {
+    # Enable OpenGL
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+        vdpauinfo
+        libva
+        libva-utils
+      ];
+    };
 
-    # Power management stuff disabled
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
+    # Some settings for nvidia
+    nvidia = {
+      modesetting.enable = true;
 
-    # Newer graphics card has open source Nvidia driver
-    open = true;
+      # Power management disabled on desktop
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
 
-    # Enable Nvidia settings
-    nvidiaSettings = true;
+      # TODO: Figure out
+      nvidiaPersistenced = false;
 
-    # Latest package for graphics card (might have to change this as they keep updating)
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+      # Newer graphics card has open source Nvidia driver
+      # Current alpha-quality is buggy, so set false by recommended
+      open = false;
+
+      # Enable Nvidia settings
+      nvidiaSettings = true;
+
+      # Latest package for graphics card (might have to change this as they keep updating)
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+    };
   };
 
   environment.sessionVariables = {
@@ -62,9 +90,7 @@
   };
 
   # Hyprland tweaks for Nvidia
-  programs.hyprland = {
-    xwayland.enable = true;
-  };
+  programs.hyprland = { xwayland.enable = true; };
 
   # }}}
 

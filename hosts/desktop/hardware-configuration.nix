@@ -4,30 +4,28 @@
 { config, lib, pkgs, modulesPath, user, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/564ef2c6-23b2-4fbe-93d7-5168f3f0bf9c";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/564ef2c6-23b2-4fbe-93d7-5168f3f0bf9c";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6A01-190D";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6A01-190D";
+    fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
+  };
 
   # TODO: Make Steam use this drive as a library
-  fileSystems."/home/${user}/Games" =
-    { 
-      device = "/dev/disk/by-uuid/d90fbc76-b236-4f53-b880-6400df274bb8";
+  fileSystems."/home/${user}/Games" = {
+    device = "/dev/disk/by-uuid/d90fbc76-b236-4f53-b880-6400df274bb8";
     fsType = "ext4";
     options = [
       #"defaults"
@@ -51,8 +49,7 @@
   };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/cf8460fc-881f-483f-a693-442d9967b991"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/cf8460fc-881f-483f-a693-442d9967b991"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -63,5 +60,6 @@
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
