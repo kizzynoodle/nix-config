@@ -1,6 +1,6 @@
 # hyprland.nix
 # Enable hyprland and use git repo package for it
-{ inputs, lib, pkgs, ... }:
+{ inputs, lib, pkgs, user, ... }:
 
 {
   # wayland.windowManager.hyprland = {
@@ -25,7 +25,8 @@
       # Programs
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
-      "$menu" = "wofi --show drun --allow-images";
+      "$menu" =
+        "wofi --show drun --allow-images --style=/home/${user}/.nix-config/home-manager/modules/desktop/wofi.css";
 
       # Super key
       "$mainMod" = "SUPER";
@@ -38,7 +39,7 @@
         "nm-applet --indicator &"
         "waybar &"
         "hyprpaper &"
-        "mako --config /home/kizzy/.config/hypr/mako.config"
+        "mako --config /home/${user}/.config/hypr/mako.config"
       ];
 
       #############################

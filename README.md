@@ -18,6 +18,7 @@ NixOS system and home manager user configuration managed through flakes.
 - [ ] Tree menu
 - [ ] Toggle terminal
 - [ ] Remove color from side bar
+    - Found out how to do this, but if done, other plugins still have bg color
 - [ ] Telescope 
 - [x] Nix LSP
 - [ ] Latex LSP
@@ -26,9 +27,10 @@ NixOS system and home manager user configuration managed through flakes.
 
 ## Hyprland
 
-- [ ] Move Hyprland setup to Nix config
+- [x] Move Hyprland setup to Nix config
 - [ ] Move Waybar setup to Nix config
 - [ ] Move Mako setup to Nix config
+- [ ] Move Wofi setup to Nix config
 - [ ] Install and setup screenshot manager
 
 ## Bugs

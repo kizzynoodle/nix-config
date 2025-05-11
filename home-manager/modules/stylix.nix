@@ -1,6 +1,6 @@
 # stylix.nix
 # Themeing home manager options
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   stylix.targets = {
@@ -10,6 +10,12 @@
     mako.enable = true;
     waybar.enable = true;
     wofi.enable = true;
+
+    # nixvim.transparentBackground = {
+    ## main = true;
+    ## numberLine = true;
+    ## signColumn = true;
+    # };
   };
 
   # TODO: Figure out how to customize qt and gtk through stylix
@@ -27,15 +33,15 @@
 
   # gtk options
   gtk = {
-     enable = true;
+    enable = true;
 
     # Set package and name for gtk theme
-#    theme = {
-#      package = lib.mkForce pkgs.adapta-gtk-theme;
-#      name = lib.mkForce "Adapta";
-#    };
-#
-#    # Set name and package for gtk icon theme
+    #    theme = {
+    #      package = lib.mkForce pkgs.adapta-gtk-theme;
+    #      name = lib.mkForce "Adapta";
+    #    };
+    #
+    #    # Set name and package for gtk icon theme
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus";

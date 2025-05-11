@@ -1,6 +1,6 @@
 # options.nix
 # Nixvim global option settings
-{ 
+{
   # Let Home manager manage Neovim
   programs.nixvim = {
     enable = true;
@@ -15,9 +15,7 @@
     colorschemes.gruvbox.enable = true;
 
     # Set global options
-    globals = {
-      mapleader = "º";
-    };
+    globals = { mapleader = "º"; };
 
     # Set local options
     opts = {
@@ -52,13 +50,14 @@
 
       # Raw lua code, non visible chars
       list = true;
-      listchars.__raw = ''{ 
-        tab = '» ', 
-        nbsp = '␣',
-        trail = '·', 
-        extends = '⟩',
-        precedes = '⟨'
-      }'';
+      listchars.__raw = ''
+        { 
+                tab = '» ', 
+                nbsp = '␣',
+                trail = '·', 
+                extends = '⟩',
+                precedes = '⟨'
+              }'';
       showbreak = "↪";
 
       # Set encoding

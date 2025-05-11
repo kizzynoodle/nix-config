@@ -75,7 +75,10 @@
     # Show delimiters
     indent-blankline = {
       enable = true;
-      # settings.scope.enable = true;
+      settings.scope = {
+        enabled = true;
+        show_exact_scope = true;
+      };
     };
 
     # Auto formatting and diagnostics
@@ -120,9 +123,13 @@
       autoReloadOnWrite = true;
     };
 
-    # Nvim Transparent
-
-    # Nvim Transparent
-    transparent.enable = true;
+    # Transparency
+    transparent = {
+      enable = true;
+      # TODO: Figure out how to make git signs transparent
+      settings = {
+        extra_groups = [ "GitSignsAdd" "GitSignsChange" "GitSignsDelete" ];
+      };
+    };
   };
 }
