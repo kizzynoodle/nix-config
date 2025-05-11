@@ -1,6 +1,6 @@
 # hyprland.nix
 # Enable hyprland and use git repo package for it
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   # wayland.windowManager.hyprland = {
@@ -58,8 +58,8 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        # "col.active_border" = "rgba(fe8019ff)";
-        # "col.inactive_border" = "rgba(3c3836ff)";
+        "col.active_border" = lib.mkForce "rgba(fe8019ff)";
+        "col.inactive_border" = lib.mkForce "rgba(3c3836ff)";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;
@@ -137,10 +137,10 @@
       master = { new_status = "dwindle"; };
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
-      #misc = {
-      #  force_default_wallpaper = -1;
-      #  disable_hyprland_logo = false;
-      #};
+      misc = {
+        # force_default_wallpaper = -1;
+        disable_hyprland_logo = lib.mkForce true;
+      };
 
       #############
       ### INPUT ###
@@ -237,9 +237,8 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      # Laptop multimedia keys for volume and LCD brightness
-
       bindel = [
+        # Laptop multimedia keys for volume and LCD brightness
         ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -248,9 +247,8 @@
         ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
       ];
 
-      # Requires playerctl
-
       bindl = [
+        # Requires playerctl
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPause, exec, playerctl play-pause"
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -260,12 +258,6 @@
       ##############################
       ### WINDOWS AND WORKSPACES ###
       ##############################
-
-      # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-      # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
-
-      # Example windowrule
-      # windowrule = float,class:^(kitty)$,title:^(kitty)$
 
       windowrule = [
         # Ignore maximize requests from apps. You'll probably like this.
