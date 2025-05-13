@@ -64,6 +64,7 @@
     wofi
     hyprpaper
     hyprshot
+    hyprlock
 
     # Sound stuff
     pavucontrol

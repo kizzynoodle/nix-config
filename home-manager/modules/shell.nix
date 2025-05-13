@@ -1,6 +1,6 @@
 # shell.nix
 # Shell configuration for home manager, default shell and plugins
-{ config, lib, user, ... }:
+{ user, ... }:
 
 {
   home.sessionVariables = { EDITOR = "nvim"; };
@@ -32,9 +32,12 @@
   };
 
   # Enable starship
-  # TODO: Set orange as main highlight color
   programs.starship = {
     enable = true;
-    settings = { add_newline = false; };
+    settings = {
+      add_newline = false;
+      # Default deleted icon not available in Nerd Fonts
+      git_status = { deleted = ""; };
+    };
   };
 }

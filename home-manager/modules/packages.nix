@@ -9,6 +9,7 @@
 
     # Office
     libreoffice
+    gimp
     megasync
     xournalpp
     zathura
