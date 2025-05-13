@@ -4,8 +4,15 @@
 { pkgs, ... }:
 
 {
-  # Enable experimental features (such as flakes, home manager, etc.)
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    # Enable experimental features (such as flakes, home manager, etc.)
+    experimental-features = [ "nix-command" "flakes" ];
+
+    # Enable Cachix to avoid rebuilding Hyprland
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys =
+      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
 
   # Enable networking package (network manager)
   networking.networkmanager.enable = true;
@@ -41,6 +48,12 @@
     # TODO: Make it only local for desktop config
     protonup
     # dxvk
+
+    # Programming
+    cargo
+    rustc
+    clang
+    cmake
 
     # Desktop stuff
     (waybar.overrideAttrs (oldAttrs: {

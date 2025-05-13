@@ -30,40 +30,54 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
-  outputs = { self, nixpkgs, nixvim, ... }@inputs: 
-  let
+  outputs = { self, nixpkgs, nixvim, ... }@inputs:
+    let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       homeStateVersion = "24.11";
       user = "kizzy";
       hosts = [
-        { hostname = "yoga"; stateVersion = "24.11"; }
-        { hostname = "desktop"; stateVersion = "24.11"; }
+        {
+          hostname = "yoga";
+          stateVersion = "24.11";
+        }
+        {
+          hostname = "desktop";
+          stateVersion = "24.11";
+        }
       ];
 
-      makeSystem = { hostname, stateVersion }: 
-      nixpkgs.lib.nixosSystem {
-        system = system;
-	specialArgs = {
-	  inherit inputs hostname stateVersion homeStateVersion user;
-	};
+      makeSystem = { hostname, stateVersion }:
+        nixpkgs.lib.nixosSystem {
+          system = system;
+          specialArgs = {
+            inherit inputs hostname stateVersion homeStateVersion user;
+          };
 
-	modules = [
-	  ./hosts/${hostname}/configuration.nix
-	  inputs.home-manager.nixosModules.default
-          inputs.stylix.nixosModules.stylix
-	  inputs.nixvim.nixosModules.nixvim
-	];
-      };
-  in
-  {
-    nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
-      configs // {
-        "${host.hostname}" = makeSystem {
-	  inherit (host) hostname stateVersion;
-      };
-    }) {} hosts;
-  };
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            inputs.home-manager.nixosModules.default
+            inputs.stylix.nixosModules.stylix
+            inputs.nixvim.nixosModules.nixvim
+          ];
+        };
+    in {
+      nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
+        configs // {
+          "${host.hostname}" =
+            makeSystem { inherit (host) hostname stateVersion; };
+        }) { } hosts;
+    };
 }

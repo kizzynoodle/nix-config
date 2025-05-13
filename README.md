@@ -39,7 +39,8 @@ After configs have been moved:
 - [ ] Move Wofi setup to Nix config
 - [ ] Install and setup screenshot manager
 
-## Bugs
+## Pipewire
 
 - [ ] Fix Discord notification issue
 - [ ] Fix Vesktop having no sound
+- [ ] Add mic system wide noise cancelation

@@ -1,5 +1,3 @@
-# hyprland.nix
-# Enable hyprland and use git repo package for it
 { inputs, lib, pkgs, user, ... }:
 
 {
@@ -7,7 +5,15 @@
   wayland.windowManager.hyprland = {
     # Enable hyprland as a NixOS module
     enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+    plugins = [
+      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
     xwayland.enable = true;
     systemd.enable = true;
 
@@ -30,6 +36,7 @@
 
       # Super key
       "$mainMod" = "SUPER";
+      "$shiftMod" = "SUPER SHIFT";
 
       #################
       ### AUTOSTART ###
@@ -38,6 +45,7 @@
       exec-once = [
         "nm-applet --indicator &"
         "waybar &"
+        "playerctld &"
         "hyprpaper &"
         "mako --config /home/${user}/.config/hypr/mako.config"
       ];
@@ -93,6 +101,41 @@
           size = 3;
           passes = 1;
           vibrancy = 0.1696;
+        };
+      };
+
+      plugin = {
+
+        # TODO: Make it work :V
+        hyprbars = {
+          bar_height = 16;
+          bar_color = "rgba(1d2021ff)";
+          "col.text" = "rgba(ebdbb2ff)";
+          # bar_text_size = 10;
+          bar_text_font = "Hack Nerd Font";
+          # bar_button_padding = 10;
+          # bar_padding = 10;
+          bar_precedence_over_border = true;
+          hyprbars-button = [
+            "rgba(fb4934ff), 20, , hyprctl dispatch killactive"
+            "rgba(b8bb26ff), 20, , hyprctl dispatch fullscreen 2"
+            "rgba(83a598ff), 20, , hyprctl dispatch togglefloating"
+          ];
+        };
+
+        hyprtrails = { color = "rgba(fe8019ff)"; };
+
+        hyprexpo = {
+          columns = 3;
+          gap_size = 5;
+          bg_col = "rgb(111111)";
+          # [center/first] [workspace] e.g. first 1 or center m+1
+          workspace_method = "center current";
+
+          enable_gesture = true; # laptop touchpad
+          gesture_fingers = 3; # 3 or 4
+          gesture_distance = 300; # how far is the "max"
+          gesture_positive = true; # positive = swipe down. Negative = swipe up.
         };
       };
 
@@ -220,11 +263,15 @@
 
         # Magic workspace toggle
         "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$shiftMod, S, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        "ALT, TAB, workspace, e+1"
+        "ALT SHIFT, TAB, workspace, e-1"
+
+        # Workspace overview
+        "$mainMod, TAB, overview:toggle, all"
+        "$shiftMod, TAB, hyprexpo:expo, toggle"
 
         # Screenshot
         "$mainMod, PRINT, exec, hyprshot -m window"
@@ -265,6 +312,8 @@
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
+
+      windowrulev2 = [ "noborder, onworkspace:w[t1]" ];
     };
   };
 }

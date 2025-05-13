@@ -6,13 +6,13 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    
+
     # Office
     libreoffice
     megasync
     xournalpp
     zathura
-    
+
     # Communication
     discord
     vesktop
@@ -23,10 +23,13 @@
     fastfetch
     eza
     btop
+    zscroll
 
     # Media
     lutris
     spotify
+    spotify-player
+    playerctl
 
     # Programming
     texlive.combined.scheme-full
