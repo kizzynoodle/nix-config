@@ -112,7 +112,7 @@
           bar_color = "rgba(1d2021ff)";
           "col.text" = "rgba(ebdbb2ff)";
           # bar_text_size = 10;
-          bar_text_font = "Hack Nerd Font";
+          bar_text_font = "FiraCode Nerd Font";
           # bar_button_padding = 10;
           # bar_padding = 10;
           bar_precedence_over_border = true;
@@ -311,6 +311,12 @@
         # Ignore maximize requests from apps. You'll probably like this.
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+
+        # TODO: Spawn windows in specific workspaces
+        #"workspace 2, firefox"
+        #"workspace 3, discord"
+        #"workspace 4, steam"
+        #"workspace 5, spotify"
       ];
 
       windowrulev2 = [ "noborder, onworkspace:w[t1]" ];

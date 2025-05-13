@@ -69,5 +69,8 @@
     pavucontrol
     qjackctl
     mpv
+
+    # Fonts
+    nerd-fonts.terminess-ttf
   ];
 }
