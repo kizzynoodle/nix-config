@@ -4,14 +4,23 @@
 { pkgs, ... }:
 
 {
-  nix.settings = {
-    # Enable experimental features (such as flakes, home manager, etc.)
-    experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    # Delete older generations automatically
+    gc.automatic = true;
 
-    # Enable Cachix to avoid rebuilding Hyprland
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    settings = {
+      # Deduplicate files in Nix store automatically
+      auto-optimise-store = true;
+
+      # Enable experimental features (such as flakes, home manager, etc.)
+      experimental-features = [ "nix-command" "flakes" ];
+
+      # Enable Cachix to avoid rebuilding Hyprland
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+    };
   };
 
   # Enable networking package (network manager)

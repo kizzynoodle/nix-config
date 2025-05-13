@@ -25,12 +25,14 @@
     eza
     btop
     zscroll
+    ranger
 
     # Media
     lutris
     spotify
     spotify-player
     playerctl
+    ankama-launcher
 
     # Programming
     texlive.combined.scheme-full
