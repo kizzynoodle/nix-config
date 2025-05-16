@@ -1,8 +1,6 @@
 # plugins.nix
 # Nixvim plugin import
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   programs.nixvim.plugins = {
     # Status bar
     lualine.enable = true;
@@ -133,4 +131,23 @@
       };
     };
   };
+
+  programs.nixvim.extraPlugins = [
+
+    # kitty-scrollback.nvim
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "kitty-scrollback";
+      src = pkgs.fetchFromGitHub {
+        owner = "mikesmithgh";
+        repo = "kitty-scrollback.nvim";
+        rev = "fea315d016eec41e807d67dd8980fa119850694a";
+        hash = "sha256-f6lzdmLMAvgJBkDQ/rIRTLkXKOKXSwV8KA5MlQNQaQs=";
+      };
+    })
+  ];
+
+  programs.nixvim.extraConfigLua = ''
+    -- kitty-scrollback.nvim
+    require('kitty-scrollback').setup()
+  '';
 }
