@@ -1,9 +1,6 @@
 # hyprland.nix
 # Home Manager Hyprland configuration
-{ inputs, lib, pkgs, user, ... }:
-
-{
-  # wayland.windowManager.hyprland = {
+{ inputs, lib, pkgs, user, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -13,9 +10,11 @@
     plugins = [
       inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
     ];
+
+    # Enable XWayland and SystemD startup
     xwayland.enable = true;
     systemd.enable = true;
 

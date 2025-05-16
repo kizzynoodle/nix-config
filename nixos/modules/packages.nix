@@ -71,6 +71,7 @@
     cmake
 
     # Desktop stuff
+    # TODO: Move over to 
     (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     }))
@@ -80,8 +81,9 @@
     hyprpaper
     hyprshot
     hyprlock
+    hypridle
 
-    # Sound stuff
+    # Media stuff
     pavucontrol
     qjackctl
     mpv

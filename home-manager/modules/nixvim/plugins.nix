@@ -32,6 +32,7 @@
       inlayHints = true;
       servers = {
         bashls.enable = true;
+        clangd.enable = true;
         nixd.enable = true;
       };
 

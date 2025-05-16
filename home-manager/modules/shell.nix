@@ -23,11 +23,15 @@
 
     # Shell alises
     shellAliases = {
+      # Use eza instead of ls for icons
       ls = "eza --icons";
+      # Aliases for updating different configurations
       "desktop-switch" =
         "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#desktop switch";
       "yoga-switch" =
         "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#yoga switch";
+      # To enable bash which in turn enables starship and fish
+      "nix-shell" = "nix-shell --command bash";
     };
   };
 

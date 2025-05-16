@@ -3,9 +3,12 @@
 { pkgs, inputs, ... }:
 
 {
+  # Enable through NixOS systemwide, configure through Home Manager
   programs.hyprland = {
     # Enable hyprland as a NixOS module
     enable = true;
+
+    # Use Hyprland flake package
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 

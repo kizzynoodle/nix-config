@@ -52,12 +52,12 @@
       list = true;
       listchars.__raw = ''
         { 
-                tab = '» ', 
-                nbsp = '␣',
-                trail = '·', 
-                extends = '⟩',
-                precedes = '⟨'
-              }'';
+          tab = '» ', 
+          nbsp = '␣',
+          trail = '·', 
+          extends = '⟩',
+          precedes = '⟨'
+        }'';
       showbreak = "↪";
 
       # Set encoding

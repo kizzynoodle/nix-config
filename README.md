@@ -25,6 +25,11 @@ NixOS system and home manager user configuration managed through flakes.
 - [ ] C++ LSP
 - [ ] Highlight current scope with treesitter and indent blankline
 
+## Shell
+
+- [ ] Launch fish in nix shell
+- [ ] Have space ship enabled in bash shell by default
+
 ## Hyprland
 
 Move following configs to Home Manager directory:

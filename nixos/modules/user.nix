@@ -7,7 +7,7 @@
   # Enable systemwide for vendor fish completions provided by Nixpkgs
   programs.fish.enable = true;
 
-  # Initialize fish after bash
+  # Fish is NOT POSIX compliant, use bash as *login* shell instead
   programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -24,12 +24,10 @@
     description = "${user}";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-  
+
   home-manager = {
     extraSpecialArgs = { inherit inputs homeStateVersion user; };
-    users = {
-      "${user}" = import ./../../home-manager/home.nix;
-    };
+    users = { "${user}" = import ./../../home-manager/home.nix; };
 
     # Backup file extension in case of overwriting
     # TODO: Fix stylix backups
