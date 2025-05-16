@@ -28,6 +28,8 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  # programs.brave.enable = true;
+  # programs.librewolf.enable = true;
 
   # Install nixvim
   programs.nixvim.enable = true;
@@ -44,6 +46,10 @@
 
     # Install at system level
     home-manager
+
+    # Browsers
+    librewolf
+    brave
 
     # Utils
     vim

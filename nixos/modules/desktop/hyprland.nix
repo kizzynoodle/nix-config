@@ -1,13 +1,12 @@
 # hyprland.nix
-# Enable hyprland and use git repo package for it
-{ inputs, pkgs, ... }:
+# Necessary xdg portal changes for Hyprland
+{ pkgs, inputs, ... }:
 
 {
-  # wayland.windowManager.hyprland = {
   programs.hyprland = {
     # Enable hyprland as a NixOS module
     enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   # Screen sharing, folder navigation, etc.

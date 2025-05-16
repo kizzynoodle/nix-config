@@ -1,11 +1,13 @@
+# hyprland.nix
+# Home Manager Hyprland configuration
 { inputs, lib, pkgs, user, ... }:
 
 {
   # wayland.windowManager.hyprland = {
   wayland.windowManager.hyprland = {
-    # Enable hyprland as a NixOS module
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # Enable hyprland as a NixOS module
     portalPackage =
       inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     plugins = [
@@ -313,10 +315,10 @@
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 
         # TODO: Spawn windows in specific workspaces
-        #"workspace 2, firefox"
-        #"workspace 3, discord"
-        #"workspace 4, steam"
-        #"workspace 5, spotify"
+        "workspace 2, class:firefox"
+        "workspace 3, class:discord"
+        "workspace 4, class:steam"
+        "workspace 5, class:spotify"
       ];
 
       windowrulev2 = [ "noborder, onworkspace:w[t1]" ];
