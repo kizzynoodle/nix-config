@@ -13,7 +13,7 @@ NixOS system and home manager user configuration managed through flakes.
 
 ## Nixvim
 
-- [ ] CMP autocomplete
+- [x] CMP autocomplete
 - [ ] Snippet
 - [ ] Tree menu
 - [ ] Toggle terminal
@@ -21,14 +21,14 @@ NixOS system and home manager user configuration managed through flakes.
     - Found out how to do this, but if done, other plugins still have bg color
 - [ ] Telescope 
 - [x] Nix LSP
-- [ ] Latex LSP
-- [ ] C++ LSP
-- [ ] Highlight current scope with treesitter and indent blankline
+- [x] Latex LSP
+- [x] C++ LSP
+- [x] Highlight current scope with treesitter and indent blankline
 
 ## Shell
 
-- [ ] Launch fish in nix shell
-- [ ] Have space ship enabled in bash shell by default
+- [x] Launch fish in nix shell
+- [x] Have space ship enabled in bash shell by default
 
 ## Hyprland
 

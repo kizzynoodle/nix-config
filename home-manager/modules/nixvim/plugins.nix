@@ -5,6 +5,9 @@
     # Status bar
     lualine.enable = true;
 
+    # Buffer bar
+    bufferline.enable = true;
+
     # Icons
     web-devicons.enable = true;
 
@@ -23,15 +26,74 @@
     # Nix expressions in neovim
     nix.enable = true;
 
+    # Highlight word under cursor
+    illuminate = {
+      enable = true;
+      underCursor = false;
+      filetypesDenylist =
+        [ "Outline" "TelescopePrompt" "alpha" "harpoon" "reason" ];
+    };
+
+    # Break bad habits, master Vim motions
+    hardtime = {
+      enable = false;
+      settings = {
+        disableMouse = true;
+        enabled = false;
+        disabledFiletypes = [ "Oil" ];
+        restrictionMode = "hint";
+        hint = true;
+        maxCount = 40;
+        maxTime = 1000;
+        restrictedKeys = {
+          "h" = [ "n" "x" ];
+          "j" = [ "n" "x" ];
+          "k" = [ "n" "x" ];
+          "l" = [ "n" "x" ];
+          "-" = [ "n" "x" ];
+          "+" = [ "n" "x" ];
+          "gj" = [ "n" "x" ];
+          "gk" = [ "n" "x" ];
+          "<CR>" = [ "n" "x" ];
+          "<C-M>" = [ "n" "x" ];
+          "<C-N>" = [ "n" "x" ];
+          "<C-P>" = [ "n" "x" ];
+        };
+      };
+    };
+
     # LSP
     lsp = {
       enable = true;
       # autoLoad = true;
       inlayHints = true;
       servers = {
-        bashls.enable = true;
-        clangd.enable = true;
-        nixd.enable = true;
+        cssls.enable = true; # CSS
+        html.enable = true; # HTML
+        marksman.enable = true; # Markdown
+        nil_ls.enable = true; # Nix
+        bashls.enable = true; # Bash
+        clangd.enable = true; # C/C++
+        yamlls.enable = true; # YAML
+        jsonls.enable = true; # JSON
+        ltex = {
+          enable = true;
+          settings = {
+            enabled =
+              [ "astro" "html" "latex" "markdown" "text" "tex" "gitcommit" ];
+            completionEnabled = true;
+            language = "en-US es-ES nl";
+          };
+        };
+        lua_ls = { # Lua
+          enable = true;
+          settings.telemetry.enable = false;
+        };
+        rust_analyzer = {
+          enable = true;
+          installRustc = true;
+          installCargo = true;
+        };
       };
 
       keymaps.lspBuf = {
@@ -41,6 +103,124 @@
         "gi" = "implementation";
         "K" = "hover";
       };
+    };
+
+    luasnip = { enable = true; };
+
+    copilot-lua = { enable = true; };
+
+    cmp-emoji.enable = true;
+
+    cmp = {
+      enable = true;
+      settings = {
+        completion = { completeopt = "menu,menuone,noinsert"; };
+        autoEnableSources = true;
+        experimental = { ghost_text = true; };
+        performance = {
+          debounce = 60;
+          fetchingTimeout = 200;
+          maxViewEntries = 30;
+        };
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "emoji"; }
+          { name = "git"; }
+          {
+            name = "buffer";
+            option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
+            keywordLength = 3;
+          }
+          { name = "copilot"; } # enable/disable copilot
+          {
+            name = "path"; # file system paths
+            keywordLength = 3;
+          }
+          {
+            name = "luasnip"; # snippets
+            keywordLength = 3;
+          }
+        ];
+        cmdline = {
+          # Use buffer source for "/" and "?"
+          "/" = {
+            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            sources = [{ name = "buffer"; }];
+          };
+          "?" = {
+            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            sources = [{ name = "buffer"; }];
+          };
+          # Use cmdline & path source for ":"
+          ":" = {
+            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            sources = [
+              { name = "path"; }
+              {
+                name = "cmdline";
+                option = { ignore_cmds = [ "Man" "!" ]; };
+              }
+            ];
+            matching = { disallow_symbol_nonprefix_matching = false; };
+          };
+        };
+        window = {
+          completion = { border = "solid"; };
+          documentation = { border = "solid"; };
+        };
+        snippet.expand = ''
+          function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        '';
+        mapping = {
+          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+          "<C-j>" = "cmp.mapping.select_next_item()";
+          "<C-k>" = "cmp.mapping.select_prev_item()";
+          "<C-e>" = "cmp.mapping.close()";
+          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<C-Space>" = "cmp.mapping.complete()";
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<C-l>" = ''
+            cmp.mapping(function()
+              if luasnip.expand_or_locally_jumpable() then
+                luasnip.expand_or_jump()
+              end
+            end, { 'i', 's' })
+          '';
+          "<C-h>" = ''
+            cmp.mapping(function()
+              if luasnip.locally_jumpable(-1) then
+                luasnip.jump(-1)
+              end
+            end, { 'i', 's' })
+          '';
+        };
+      };
+    };
+
+    cmp-nvim-lsp = { enable = true; };
+    cmp-nvim-lua = { enable = true; };
+    cmp-buffer = { enable = true; };
+    cmp-path = { enable = true; };
+    cmp_luasnip = { enable = true; };
+    cmp-cmdline = { enable = true; };
+
+    lspkind = {
+      enable = true;
+      symbolMap = { Copilot = ""; };
+      extraOptions = {
+        maxwidth = 50;
+        ellipsis_char = "...";
+      };
+    };
+
+    schemastore = {
+      enable = true;
+      yaml.enable = true;
+      json.enable = false;
     };
 
     # Better file highlighting

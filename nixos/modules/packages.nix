@@ -50,6 +50,7 @@
 
     # Utils
     vim
+    curl
     wget
     git
 
@@ -66,6 +67,7 @@
     rustc
     clang
     cmake
+    nodejs
 
     # Desktop stuff
     # TODO: Move over to 
