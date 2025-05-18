@@ -256,9 +256,28 @@
     # Show delimiters
     indent-blankline = {
       enable = true;
-      settings.scope = {
-        enabled = true;
-        show_exact_scope = true;
+      settings = {
+        exclude = {
+          buftypes = [ "terminal" "quickfix" ];
+          filetypes = [
+            ""
+            "checkhealth"
+            "help"
+            "lspinfo"
+            "packer"
+            "TelescopePrompt"
+            "TelescopeResults"
+            # "yaml"
+          ];
+        };
+        #indent = {
+        #  highlight = "";
+        #};
+        scope = {
+          enabled = true;
+          # highlight = "#fe8819";
+          show_exact_scope = true;
+        };
       };
     };
 

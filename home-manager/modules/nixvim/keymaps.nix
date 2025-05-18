@@ -3,7 +3,7 @@
   programs.nixvim.keymaps = [
     # TODO:
     {
-      action = "<cmd>NvimTreeToggle<cr>";
+      action = "<cmd>NvimTreeToggle<CR>";
       key = "<C-t>";
       options = { silent = true; };
     }
