@@ -1,8 +1,6 @@
 # stylix.nix
 # Themeing home manager options
-{ lib, pkgs, ... }:
-
-{
+{ lib, pkgs, ... }: {
   stylix.targets = {
     kitty.enable = true;
     hyprland.enable = true;
@@ -10,6 +8,7 @@
     mako.enable = true;
     waybar.enable = true;
     wofi.enable = true;
+    nixvim.enable = false;
 
     # nixvim.transparentBackground = {
     ## main = true;
@@ -25,10 +24,10 @@
     enable = true;
 
     # platform theme "gtk" or "gnome"
-    # platformTheme = lib.mkForce "gtk3";
+    # platformTheme = lib.mkForce "gtk";
 
     # Name and package of qt theme
-    # style.name = lib.mkForce "gtk3";
+    # style.name = lib.mkForce "gtk";
   };
 
   # gtk options
@@ -36,13 +35,15 @@
     enable = true;
 
     # Set package and name for gtk theme
-    #    theme = {
-    #      package = lib.mkForce pkgs.adapta-gtk-theme;
-    #      name = lib.mkForce "Adapta";
-    #    };
-    #
-    #    # Set name and package for gtk icon theme
+    # theme = {
+    #   package = lib.mkForce pkgs.gruvbox-gtk-theme;
+    #   name = lib.mkForce "Gruvbox GTK Theme";
+    # };
+
+    # Set name and package for gtk icon theme
     iconTheme = {
+      # package = pkgs.gruvbox-plus-icons;
+      # name = "Gruvbox Plus Dark";
       package = pkgs.papirus-icon-theme;
       name = "Papirus";
     };

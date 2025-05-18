@@ -42,7 +42,20 @@ After configs have been moved:
 - [ ] Move Waybar setup to Nix config
 - [ ] Move Mako setup to Nix config
 - [ ] Move Wofi setup to Nix config
-- [ ] Install and setup screenshot manager
+
+Add following features to Hyprland:
+- [x] Install and setup screenshot manager
+- [ ] Hyprbar setup
+    - [ ] Make em work
+    - [ ] Window rule to show hyprbar on floating windows
+- [ ] Hyprlock
+- [ ] Power menu
+
+### Waybar
+
+- [ ] Pipewire controls
+- [ ] Hyprland/workspace on each monitor
+- [ ] App menu
 
 ## Pipewire
 

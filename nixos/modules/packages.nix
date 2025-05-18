@@ -1,9 +1,6 @@
 # packages.nix
 # Environment packages at system level
-
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   nix = {
     # Delete older generations automatically
     gc.automatic = true;
@@ -82,6 +79,8 @@
     hyprshot
     hyprlock
     hypridle
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
 
     # Media stuff
     pavucontrol

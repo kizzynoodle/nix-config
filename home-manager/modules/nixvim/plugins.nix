@@ -49,6 +49,8 @@
       nixGrammars = true;
       grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         bash
+        c
+        cpp
         json
         lua
         make
@@ -107,10 +109,16 @@
     # LSP Message and notif daemon
     fidget = {
       enable = true;
-      settings.progress = {
-        suppress_on_insert = true;
-        ignore_done_already = true;
-        poll_rate = 1;
+      settings = {
+        progress = {
+          suppress_on_insert = true;
+          ignore_done_already = true;
+          poll_rate = 1;
+        };
+
+        notification.window.winblend = 0;
+
+        integration = { "nvim-tree".enable = true; };
       };
     };
 
@@ -126,28 +134,35 @@
     transparent = {
       enable = true;
       # TODO: Figure out how to make git signs transparent
+      autoLoad = true;
       settings = {
+        groups = [
+          "Normal"
+          "NormalNC"
+          "Comment"
+          "Constant"
+          "Special"
+          "Identifier"
+          "Statement"
+          "PreProc"
+          "Type"
+          "Underlined"
+          "Todo"
+          "String"
+          "Function"
+          "Conditional"
+          "Repeat"
+          "Operator"
+          "Structure"
+          "LineNr"
+          "SignColumn"
+          "EndOfBuffer"
+          "CursorLine"
+          "CursorLineNR"
+        ];
         extra_groups = [ "GitSignsAdd" "GitSignsChange" "GitSignsDelete" ];
+        exclude_groups = [ "NonText" "StatusLine" "StatusLineNC" ];
       };
     };
   };
-
-  programs.nixvim.extraPlugins = [
-
-    # kitty-scrollback.nvim
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "kitty-scrollback";
-      src = pkgs.fetchFromGitHub {
-        owner = "mikesmithgh";
-        repo = "kitty-scrollback.nvim";
-        rev = "fea315d016eec41e807d67dd8980fa119850694a";
-        hash = "sha256-f6lzdmLMAvgJBkDQ/rIRTLkXKOKXSwV8KA5MlQNQaQs=";
-      };
-    })
-  ];
-
-  programs.nixvim.extraConfigLua = ''
-    -- kitty-scrollback.nvim
-    require('kitty-scrollback').setup()
-  '';
 }

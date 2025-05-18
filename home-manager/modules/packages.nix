@@ -26,6 +26,7 @@
     btop
     zscroll
     ranger
+    yt-dlp
 
     # Media
     lutris
@@ -36,6 +37,7 @@
 
     # Programming
     texlive.combined.scheme-full
+    pandoc
 
   ];
 }

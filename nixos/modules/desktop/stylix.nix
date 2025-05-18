@@ -1,15 +1,24 @@
 # stylix.nix
 # Global stylization for NixOS
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Themeing
   stylix = {
     enable = true;
+    autoEnable = true;
     image = ./wallpaper.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     polarity = "dark";
+
+    targets = {
+      plymouth.enable = true;
+      grub = {
+        enable = true;
+        useWallpaper = true;
+      };
+    };
 
     # Font
     fonts = {
