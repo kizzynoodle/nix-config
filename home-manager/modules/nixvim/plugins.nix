@@ -71,7 +71,8 @@
         cssls.enable = true; # CSS
         html.enable = true; # HTML
         marksman.enable = true; # Markdown
-        nil_ls.enable = true; # Nix
+        # nil_ls.enable = true; # Nix
+        nixd.enable = true; # Nix
         bashls.enable = true; # Bash
         clangd.enable = true; # C/C++
         yamlls.enable = true; # YAML

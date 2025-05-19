@@ -1,8 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, stateVersion, hostname, ... }: {
+# configuration.nix
+# This is a NixOS configuration file for a desktop system
+# - NVIDIA graphics card support
+# - Dual boot with Windows
+# - Steam support
+# - Dual monitor setup
+{ config, pkgs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
@@ -31,8 +33,6 @@
     };
   };
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
-
-  networking.hostName = hostname; # Define your hostname.
 
   # {{{ NVIDIA
 
@@ -91,7 +91,4 @@
   programs.hyprland = { xwayland.enable = true; };
 
   # }}}
-
-  system.stateVersion = stateVersion; # Did you read the comment?
-
 }

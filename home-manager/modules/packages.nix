@@ -1,8 +1,6 @@
 # packages.nix
 # Kizzy user home manager packages
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
@@ -27,17 +25,19 @@
     zscroll
     ranger
     yt-dlp
+    megacmd
+    speedtest-cli
 
     # Media
     lutris
     spotify
     spotify-player
     playerctl
+    vlc
     ankama-launcher
 
     # Programming
     texlive.combined.scheme-full
     pandoc
-
   ];
 }

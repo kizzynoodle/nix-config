@@ -318,6 +318,10 @@
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 
+        # Float specific windows
+        "float, class:MEGAsync"
+        "noborder, class:MEGAsync"
+
         # TODO: Spawn windows in specific workspaces
         "workspace 2, class:firefox"
         "workspace 3, class:discord"

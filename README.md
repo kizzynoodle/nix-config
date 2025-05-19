@@ -18,12 +18,16 @@ NixOS system and home manager user configuration managed through flakes.
 - [ ] Tree menu
 - [ ] Toggle terminal
 - [ ] Remove color from side bar
-    - Found out how to do this, but if done, other plugins still have bg color
+    - Remove bg from LSP signs
 - [ ] Telescope 
 - [x] Nix LSP
 - [x] Latex LSP
 - [x] C++ LSP
 - [x] Highlight current scope with treesitter and indent blankline
+
+### Nixvim Bugs
+
+- [ ] Fix icons for fidget nvim and lua tree
 
 ## Shell
 
