@@ -8,7 +8,8 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
-    theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+    # TODO: Uncomment the following line to use a custom theme.
+    # theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
   };
   services.desktopManager.plasma6.enable = true;
 
