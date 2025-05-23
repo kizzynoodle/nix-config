@@ -27,14 +27,16 @@
     yt-dlp
     megacmd
     speedtest-cli
+    w3m
 
     # Media
     lutris
+    ankama-launcher
     spotify
     spotify-player
     playerctl
     vlc
-    ankama-launcher
+    obs-studio
 
     # Programming
     texlive.combined.scheme-full

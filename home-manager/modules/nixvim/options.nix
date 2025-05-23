@@ -44,6 +44,12 @@
       ignorecase = true;
       smartcase = true;
 
+      # Use treesitter for folding by default
+      foldcolumn = "1";
+      foldlevel = 99;
+      foldenable = true;
+      foldlevelstart = 99;
+
       # Configure how new splits should be opened
       splitright = true;
       splitbelow = true;

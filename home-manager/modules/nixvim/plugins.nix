@@ -1,7 +1,14 @@
 # plugins.nix
 # Nixvim plugin import
 { pkgs, ... }: {
+
+  # TODO: Figure out how to make lazy loading work
+  # programs.nixvim.lazyLoad.enable = true;
+
   programs.nixvim.plugins = {
+
+    # {{{ UI Plugins
+
     # Status bar
     lualine.enable = true;
 
@@ -10,6 +17,50 @@
 
     # Icons
     web-devicons.enable = true;
+
+    # Folding
+    nvim-ufo = {
+      enable = true;
+      settings = {
+        # Show amount of liens folded
+        fold_virt_text_handler = ''
+          function(virtText, lnum, endLnum, width, truncate)
+            local newVirtText = {}
+            local suffix = ('  %d '):format(endLnum - lnum)
+            local sufWidth = vim.fn.strdisplaywidth(suffix)
+            local targetWidth = width - sufWidth
+            local curWidth = 0
+            for _, chunk in ipairs(virtText) do
+              local chunkText = chunk[1]
+              local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+              if targetWidth > curWidth + chunkWidth then
+                table.insert(newVirtText, chunk)
+              else
+                chunkText = truncate(chunkText, targetWidth - curWidth)
+                local hlGroup = chunk[2]
+                table.insert(newVirtText, {chunkText, hlGroup})
+                chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                -- str width returned from truncate() may less than 2nd argument, need padding
+                if curWidth + chunkWidth < targetWidth then
+                  suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                end
+                break
+              end
+              curWidth = curWidth + chunkWidth
+            end
+            table.insert(newVirtText, {suffix, 'MoreMsg'})
+            return newVirtText
+          end
+        '';
+        provide_selector = ''
+          function(bufnr, filetype, buftype)
+            return { 'lsp', 'treesitter', 'indent' }
+          end
+        '';
+      };
+    };
+
+    # }}} UI Plugins
 
     # Sets tab width based on current file
     sleuth.enable = true;
@@ -359,6 +410,8 @@
           "EndOfBuffer"
           "CursorLine"
           "CursorLineNR"
+          "FoldColumn"
+          "FoldContext"
         ];
         extra_groups = [ "GitSignsAdd" "GitSignsChange" "GitSignsDelete" ];
         exclude_groups = [ "NonText" "StatusLine" "StatusLineNC" ];
