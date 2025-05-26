@@ -1,3 +1,4 @@
+# vim: tabstop=2 shiftwidth=2 expandtab foldmethod=marker
 # plugins.nix
 # Nixvim plugin import
 { pkgs, ... }: {
@@ -52,6 +53,8 @@
             return newVirtText
           end
         '';
+
+        # Use LSP for folding
         provide_selector = ''
           function(bufnr, filetype, buftype)
             return { 'lsp', 'treesitter', 'indent' }
@@ -60,10 +63,13 @@
       };
     };
 
-    # }}} UI Plugins
-
-    # Sets tab width based on current file
-    sleuth.enable = true;
+    # Highlight word under cursor
+    illuminate = {
+      enable = true;
+      underCursor = false;
+      filetypesDenylist =
+        [ "Outline" "TelescopePrompt" "alpha" "harpoon" "reason" ];
+    };
 
     # Lazygit
     lazygit.enable = true;
@@ -74,16 +80,43 @@
       settings.current_line_blame = true;
     };
 
+    # Show delimiters
+    indent-blankline = {
+      enable = true;
+      settings = {
+        exclude = {
+          buftypes = [ "terminal" "quickfix" ];
+          filetypes = [
+            ""
+            "checkhealth"
+            "help"
+            "lspinfo"
+            "packer"
+            "TelescopePrompt"
+            "TelescopeResults"
+            # "yaml"
+          ];
+        };
+        #indent = {
+        #  highlight = "";
+        #};
+        scope = {
+          enabled = true;
+          # highlight = "#fe8819";
+          show_exact_scope = true;
+        };
+      };
+    };
+
+    # }}} UI Plugins
+
+    # {{{ Tweaks and Utilities
+
     # Nix expressions in neovim
     nix.enable = true;
 
-    # Highlight word under cursor
-    illuminate = {
-      enable = true;
-      underCursor = false;
-      filetypesDenylist =
-        [ "Outline" "TelescopePrompt" "alpha" "harpoon" "reason" ];
-    };
+    # Sets tab width based on current file
+    sleuth.enable = true;
 
     # Break bad habits, master Vim motions
     hardtime = {
@@ -112,6 +145,10 @@
         };
       };
     };
+
+    # }}} Tweaks and Utilities
+
+    # {{{ LSP Plugins
 
     # LSP
     lsp = {
@@ -305,34 +342,6 @@
       settings = { max_lines = 2; };
     };
 
-    # Show delimiters
-    indent-blankline = {
-      enable = true;
-      settings = {
-        exclude = {
-          buftypes = [ "terminal" "quickfix" ];
-          filetypes = [
-            ""
-            "checkhealth"
-            "help"
-            "lspinfo"
-            "packer"
-            "TelescopePrompt"
-            "TelescopeResults"
-            # "yaml"
-          ];
-        };
-        #indent = {
-        #  highlight = "";
-        #};
-        scope = {
-          enabled = true;
-          # highlight = "#fe8819";
-          show_exact_scope = true;
-        };
-      };
-    };
-
     # Auto formatting and diagnostics
     none-ls = {
       enable = true;
@@ -356,6 +365,8 @@
         '';
       };
     };
+
+    # }}} LSP Plugins
 
     # LSP Message and notif daemon
     fidget = {

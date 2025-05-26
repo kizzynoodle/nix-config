@@ -30,6 +30,14 @@
       # device = "/dev/sda";
       device = "nodev";
       efiSupport = true;
+      #extraEntries = ''
+      #  menuentry "Windows 10" {
+      #    insmod part_gpt
+      #    insmod fat
+      #    search --no-floppy --fs-uuid --set=root 0412DACD12DAC2BA
+      #    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+      #  };
+      #'';
     };
   };
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];

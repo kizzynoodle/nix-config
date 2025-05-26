@@ -38,6 +38,9 @@
     vlc
     obs-studio
 
+    # Desktop stuff
+    wttrbar
+
     # Programming
     texlive.combined.scheme-full
     pandoc
