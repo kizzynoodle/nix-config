@@ -9,6 +9,7 @@
     libreoffice
     gimp
     megasync
+    mupdf
     xournalpp
     zathura
 
@@ -18,16 +19,18 @@
     telegram-desktop
 
     # Terminal utils
-    kitty
-    fastfetch
-    eza
     btop
-    zscroll
-    ranger
-    yt-dlp
+    eza
+    fastfetch
+    kitty
     megacmd
+    neovim-remote
+    ranger
+    rustfmt
     speedtest-cli
     w3m
+    yt-dlp
+    zscroll
 
     # Media
     lutris
@@ -44,5 +47,17 @@
     # Programming
     texlive.combined.scheme-full
     pandoc
+
+    # Formatters
+    codespell
+    shfmt
+    stylua
+    jq
+    nodePackages.prettier
+
+    # Video editing
+    kdePackages.kdenlive
+    protonmail-desktop
+    davinci-resolve-studio
   ];
 }

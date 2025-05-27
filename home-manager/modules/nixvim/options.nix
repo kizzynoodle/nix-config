@@ -1,3 +1,4 @@
+# vim: foldmethod=marker
 # options.nix
 # Nixvim global option settings
 {
@@ -15,7 +16,10 @@
     colorschemes.gruvbox.enable = true;
 
     # Set global options
-    globals = { mapleader = "º"; };
+    globals = {
+      mapleader = "º";
+      maplocalleader = ",";
+    };
 
     # Set local options
     opts = {
@@ -85,5 +89,18 @@
       # Start scrolling when cursor is X lines away from top/bottom
       scrolloff = 5;
     };
+
+    # {{{ Highlight overrides
+    highlightOverride = {
+      TreesitterContextBottom = {
+        bg = "none";
+        underline = true;
+      };
+      TreesitterContextLineNumberBottom = {
+        bg = "none";
+        underline = true;
+      };
+    };
+    # }}}
   };
 }

@@ -1,14 +1,14 @@
 # vim: tabstop=2 shiftwidth=2 expandtab foldmethod=marker
 # plugins.nix
 # Nixvim plugin import
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
 
   # TODO: Figure out how to make lazy loading work
   # programs.nixvim.lazyLoad.enable = true;
 
   programs.nixvim.plugins = {
 
-    # {{{ UI Plugins
+    # {{{ UI
 
     # Status bar
     lualine.enable = true;
@@ -23,7 +23,7 @@
     nvim-ufo = {
       enable = true;
       settings = {
-        # Show amount of liens folded
+        # Show amount of lines folded
         fold_virt_text_handler = ''
           function(virtText, lnum, endLnum, width, truncate)
             local newVirtText = {}
@@ -108,9 +108,56 @@
       };
     };
 
+    # NVIM Tree
+    # TODO: Add keybinds for opening and closing nvim tree
+    nvim-tree = {
+      enable = true;
+      openOnSetupFile = true;
+      autoReloadOnWrite = true;
+    };
+
+    # Transparency
+    transparent = {
+      enable = true;
+      # TODO: Figure out how to make git signs transparent
+      autoLoad = true;
+      settings = {
+        groups = [
+          "Normal"
+          "NormalNC"
+          "Comment"
+          "Constant"
+          "Special"
+          "Identifier"
+          "Statement"
+          "PreProc"
+          "Type"
+          "Underlined"
+          "Todo"
+          "String"
+          "Function"
+          "Conditional"
+          "Repeat"
+          "Operator"
+          "Structure"
+          "LineNr"
+          "SignColumn"
+          "EndOfBuffer"
+          "CursorLine"
+          "CursorLineNR"
+          "FoldColumn"
+          "FoldContext"
+          "TreesitterContextBottom"
+          "TreesitterContextLineNumberBottom"
+        ];
+        extra_groups = [ "GitSignsAdd" "GitSignsChange" "GitSignsDelete" ];
+        exclude_groups = [ "NonText" "StatusLine" "StatusLineNC" ];
+      };
+    };
+
     # }}} UI Plugins
 
-    # {{{ Tweaks and Utilities
+    # {{{ Tweaks and utilities
 
     # Nix expressions in neovim
     nix.enable = true;
@@ -146,9 +193,12 @@
       };
     };
 
+    # Discord rich presence
+    presence-nvim = { enable = true; };
+
     # }}} Tweaks and Utilities
 
-    # {{{ LSP Plugins
+    # {{{ LSP
 
     # LSP
     lsp = {
@@ -296,6 +346,7 @@
     cmp-path = { enable = true; };
     cmp_luasnip = { enable = true; };
     cmp-cmdline = { enable = true; };
+    cmp-latex-symbols = { enable = true; };
 
     lspkind = {
       enable = true;
@@ -337,36 +388,51 @@
       };
     };
 
+    # Indicate current context
     treesitter-context = {
       enable = true;
       settings = { max_lines = 2; };
     };
 
-    # Auto formatting and diagnostics
-    none-ls = {
+    # Auto formatting
+    conform-nvim = {
       enable = true;
-      sources = { formatting = { nixfmt.enable = true; }; };
-
       settings = {
-        on_attach = ''
-          function(client, bufnr)
-            if client.supports_method("textDocument/formatting") then
-              vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                  group = augroup,
-                  buffer = bufnr,
-                  callback = function()
-                      vim.lsp.buf.format({ async = false })
-                      -- vim.lsp.buf.formatting_sync()
-                  end,
-              })
-            end
-          end 
-        '';
+        format_on_save = {
+          lsp_format = "fallback";
+          timeout_ms = 500;
+        };
+        format_after_save = { lsp_format = "fallback"; };
+        log_level = "warn";
+        notify_on_error = true;
+        notify_no_formatters = true;
+        formatters_by_ft = {
+          bash = [ "shfmt" ];
+          nix = [ "nixfmt" ];
+          lua = [ "stylua" ];
+          json = [ "jq" ];
+          yaml = [ "prettier" ];
+          markdown = [ "prettier" ];
+          tex = [ "latexindent" ];
+          html = [ "prettier" ];
+          css = [ "prettier" ];
+          javascript = [ "prettier" ];
+          rust = [ "rustfmt" ];
+
+          # All file types
+          "*" = [ "codespell" ];
+        };
+        formatters = {
+          codespell.command = lib.getExe pkgs.codespell;
+          jq.command = lib.getExe pkgs.jq;
+          nixfmt.command = lib.getExe pkgs.nixfmt;
+          prettier.command = lib.getExe pkgs.nodePackages.prettier;
+          rustfmt.command = lib.getExe pkgs.rustfmt;
+          shfmt.command = lib.getExe pkgs.shfmt;
+          stylua.command = lib.getExe pkgs.stylua;
+        };
       };
     };
-
-    # }}} LSP Plugins
 
     # LSP Message and notif daemon
     fidget = {
@@ -384,49 +450,26 @@
       };
     };
 
-    # NVIM Tree
-    # TODO: Add keybinds for opening and closing nvim tree
-    nvim-tree = {
-      enable = true;
-      openOnSetupFile = true;
-      autoReloadOnWrite = true;
-    };
+    # }}} LSP Plugins
 
-    # Transparency
-    transparent = {
+    # {{{ Language specific
+    vimtex = {
       enable = true;
-      # TODO: Figure out how to make git signs transparent
-      autoLoad = true;
       settings = {
-        groups = [
-          "Normal"
-          "NormalNC"
-          "Comment"
-          "Constant"
-          "Special"
-          "Identifier"
-          "Statement"
-          "PreProc"
-          "Type"
-          "Underlined"
-          "Todo"
-          "String"
-          "Function"
-          "Conditional"
-          "Repeat"
-          "Operator"
-          "Structure"
-          "LineNr"
-          "SignColumn"
-          "EndOfBuffer"
-          "CursorLine"
-          "CursorLineNR"
-          "FoldColumn"
-          "FoldContext"
-        ];
-        extra_groups = [ "GitSignsAdd" "GitSignsChange" "GitSignsDelete" ];
-        exclude_groups = [ "NonText" "StatusLine" "StatusLineNC" ];
+        # latexFormatter = "latexindent";
+
+        # latexFormatterArgs = [ "-l" ];
+        # latexFormatterConfig = "indentLine";
+        latexLinting = true;
+        latexLintingArgs = [ "--synctex=1" ];
+        # latexLintingConfig = "chktexrc";
+        view_method = "zathura";
+        latexmk_progrname = "nvr";
+
+        quickfix_mode = 2;
+        quickfix_open_on_warning = true;
       };
     };
+    # }}}
   };
 }
