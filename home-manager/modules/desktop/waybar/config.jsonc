@@ -1,0 +1,182 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+
+    "modules-left": [
+        "custom/menu",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "custom/weather",
+        "clock"
+    ],
+
+    "modules-right": [
+        "mpris",
+        "tray",
+        // "cpu_text",
+        // "cpu",
+        // "memory",
+        // "battery",
+        "network",
+        "pulseaudio"
+    ],
+
+    "custom/menu": {
+        "format": " ",
+        // "tooltip": true,
+        // "tooltip-format": "<tt><small>Menu</small></tt>",
+        "on-click": "wofi -show drun"
+        // "on-click-right": "menu"
+    },
+
+    "hyprland/workspaces": {
+        "active-only": false,
+        "disable-scroll": false,
+        "all-outputs": true,
+        "tooltip": true,
+        "format": "<sub>{icon}</sub>",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6]
+            // "HDMI-A-1": [1, 2, 3, 4, 5],
+            // "HDMI-A-2": [1, 2, 3, 4, 5]
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "icon": true,
+        "icon-size": 12,
+        "max-length": 30,
+        "separate-outputs": true
+    },
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 60,
+        "exec": "wttrbar --location Madrid --custom-indicator '{ICON} {temp_C}'",
+        "return-type": "json"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": " {:%H:%M:%S (%Z)}",
+        "format-alt": " {:%A, %B %d, %Y (%R)}",
+        "tooltip": true,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "timezone": "Europe/Madrid",
+        "timezones": [
+            "Europe/Madrid",
+            "America/New_York",
+            "America/Los_Angeles"
+        ],
+        "locale": "en_US.utf8",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ebdbb2'><b>{}</b></span>",
+                "days":       "<span color='#fabd2f'>{}</span>",
+                "weeks":      "<span color='#83a598'><b>W{}</b></span>",
+                "weekdays":   "<span color='#d65d0e'><b>{}</b></span>",
+                "today":      "<span color='#fb4934'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-click-middle": "tz_up",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 1,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "interval": 1,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "battery": {
+        "format": "bat {capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi" : " {essid} ({signalStrength}%)",
+        "format-ethernet": " {bandwidthTotalBytes}",
+        "format-disconnected" : "󰖪 Disconnected",
+        "interval": 1,
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": " {volume}%",
+        "format-bluetooth": "vol {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+
+    "mpris": {
+        "format": "{player_icon} {dynamic} ",
+        "format-paused": "{status_icon} <i>{dynamic}</i> ",
+        "dynamic-order": [ "position", "length", "artist", "title" ],
+        "dynamic-len": 50,
+        "enable-tooltip-len-limits": true,
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵",
+            "spotify": ""
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "interval": 1,
+        "ignored-players": ["firefox"]
+    }
+}

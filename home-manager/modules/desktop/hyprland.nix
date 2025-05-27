@@ -1,6 +1,10 @@
 # hyprland.nix
 # Home Manager Hyprland configuration
-{ inputs, lib, pkgs, user, ... }: {
+{ inputs, lib, pkgs, user, ... }:
+let
+  desktop-config-dir = "/home/${user}/.nix-config/home-manager/modules/desktop";
+  waybar-config-dir = "${desktop-config-dir}/waybar";
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -33,7 +37,7 @@
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" =
-        "wofi --show drun --allow-images --style=/home/${user}/.nix-config/home-manager/modules/desktop/wofi.css";
+        "wofi --show drun --allow-images --style=${desktop-config-dir}/wofi/wofi.css";
 
       # Super key
       "$mainMod" = "SUPER";
@@ -45,10 +49,10 @@
 
       exec-once = [
         "nm-applet --indicator &"
-        "waybar &"
+        "waybar -c ${waybar-config-dir}/config.json -s ${waybar-config-dir}/style.css &"
         "playerctld &"
         "hyprpaper &"
-        "mako --config /home/${user}/.config/hypr/mako.config"
+        "mako --config ${desktop-config-dir}/mako/mako.config"
       ];
 
       #############################
