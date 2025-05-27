@@ -49,7 +49,7 @@ in {
 
       exec-once = [
         "nm-applet --indicator &"
-        "waybar -c ${waybar-config-dir}/config.json -s ${waybar-config-dir}/style.css &"
+        "waybar -c ${waybar-config-dir}/config.jsonc -s ${waybar-config-dir}/style.css &"
         "playerctld &"
         "hyprpaper &"
         "mako --config ${desktop-config-dir}/mako/mako.config"
