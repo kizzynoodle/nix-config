@@ -324,9 +324,10 @@
 
         # TODO: Spawn windows in specific workspaces
         "workspace 2, class:firefox"
-        "workspace 3, class:discord"
+        "workspace 3, class:obs-studio"
         "workspace 4, class:steam"
-        "workspace 5, class:spotify"
+        "workspace 5, class:discord"
+        "workspace 6, class:spotify"
       ];
 
       windowrulev2 = [ "noborder, onworkspace:w[t1]" ];
