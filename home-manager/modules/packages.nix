@@ -12,8 +12,8 @@ let
   #   inherit (pkgs.texlive) collection-langcyrillic;
   # };
 
-  mytex = pkgs.texliveFull.withPackages (ps:
-    with ps; [
+  mytex = pkgs.texliveFull.withPackages (
+    ps: with ps; [
       scheme-full
       collection-latexrecommended
       collection-latexextra
@@ -22,8 +22,10 @@ let
       collection-bibtexextra
       collection-langcyrillic
       lastpage
-    ]);
-in {
+    ]
+  );
+in
+{
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
@@ -33,15 +35,18 @@ in {
     gimp
     megasync
     mupdf
+    sxiv
     xournalpp
     zathura
 
     # Communication
     discord
     vesktop
+    webcord
     telegram-desktop
 
     # Terminal utils
+    bc
     btop
     eza
     fastfetch
@@ -74,6 +79,7 @@ in {
 
     # Formatters
     codespell
+    nixfmt-rfc-style
     shfmt
     stylua
     jq

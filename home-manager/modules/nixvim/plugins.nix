@@ -1,7 +1,8 @@
 # vim: tabstop=2 shiftwidth=2 expandtab foldmethod=marker
 # plugins.nix
 # Nixvim plugin import
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
 
   # TODO: Figure out how to make lazy loading work
   # programs.nixvim.lazyLoad.enable = true;
@@ -67,8 +68,13 @@
     illuminate = {
       enable = true;
       underCursor = false;
-      filetypesDenylist =
-        [ "Outline" "TelescopePrompt" "alpha" "harpoon" "reason" ];
+      filetypesDenylist = [
+        "Outline"
+        "TelescopePrompt"
+        "alpha"
+        "harpoon"
+        "reason"
+      ];
     };
 
     # Lazygit
@@ -85,7 +91,10 @@
       enable = true;
       settings = {
         exclude = {
-          buftypes = [ "terminal" "quickfix" ];
+          buftypes = [
+            "terminal"
+            "quickfix"
+          ];
           filetypes = [
             ""
             "checkhealth"
@@ -150,8 +159,16 @@
           "TreesitterContextBottom"
           "TreesitterContextLineNumberBottom"
         ];
-        extra_groups = [ "GitSignsAdd" "GitSignsChange" "GitSignsDelete" ];
-        exclude_groups = [ "NonText" "StatusLine" "StatusLineNC" ];
+        extra_groups = [
+          "GitSignsAdd"
+          "GitSignsChange"
+          "GitSignsDelete"
+        ];
+        exclude_groups = [
+          "NonText"
+          "StatusLine"
+          "StatusLineNC"
+        ];
       };
     };
 
@@ -177,24 +194,62 @@
         maxCount = 40;
         maxTime = 1000;
         restrictedKeys = {
-          "h" = [ "n" "x" ];
-          "j" = [ "n" "x" ];
-          "k" = [ "n" "x" ];
-          "l" = [ "n" "x" ];
-          "-" = [ "n" "x" ];
-          "+" = [ "n" "x" ];
-          "gj" = [ "n" "x" ];
-          "gk" = [ "n" "x" ];
-          "<CR>" = [ "n" "x" ];
-          "<C-M>" = [ "n" "x" ];
-          "<C-N>" = [ "n" "x" ];
-          "<C-P>" = [ "n" "x" ];
+          "h" = [
+            "n"
+            "x"
+          ];
+          "j" = [
+            "n"
+            "x"
+          ];
+          "k" = [
+            "n"
+            "x"
+          ];
+          "l" = [
+            "n"
+            "x"
+          ];
+          "-" = [
+            "n"
+            "x"
+          ];
+          "+" = [
+            "n"
+            "x"
+          ];
+          "gj" = [
+            "n"
+            "x"
+          ];
+          "gk" = [
+            "n"
+            "x"
+          ];
+          "<CR>" = [
+            "n"
+            "x"
+          ];
+          "<C-M>" = [
+            "n"
+            "x"
+          ];
+          "<C-N>" = [
+            "n"
+            "x"
+          ];
+          "<C-P>" = [
+            "n"
+            "x"
+          ];
         };
       };
     };
 
     # Discord rich presence
-    presence-nvim = { enable = true; };
+    presence-nvim = {
+      enable = true;
+    };
 
     # }}} Tweaks and Utilities
 
@@ -218,13 +273,21 @@
         ltex = {
           enable = true;
           settings = {
-            enabled =
-              [ "astro" "html" "latex" "markdown" "text" "tex" "gitcommit" ];
+            enabled = [
+              "astro"
+              "html"
+              "latex"
+              "markdown"
+              "text"
+              "tex"
+              "gitcommit"
+            ];
             completionEnabled = true;
             language = "en-US es-ES nl";
           };
         };
-        lua_ls = { # Lua
+        lua_ls = {
+          # Lua
           enable = true;
           settings.telemetry.enable = false;
         };
@@ -244,18 +307,26 @@
       };
     };
 
-    luasnip = { enable = true; };
+    luasnip = {
+      enable = true;
+    };
 
-    copilot-lua = { enable = true; };
+    copilot-lua = {
+      enable = true;
+    };
 
     cmp-emoji.enable = true;
 
     cmp = {
       enable = true;
       settings = {
-        completion = { completeopt = "menu,menuone,noinsert"; };
+        completion = {
+          completeopt = "menu,menuone,noinsert";
+        };
         autoEnableSources = true;
-        experimental = { ghost_text = true; };
+        experimental = {
+          ghost_text = true;
+        };
         performance = {
           debounce = 60;
           fetchingTimeout = 200;
@@ -283,29 +354,46 @@
         cmdline = {
           # Use buffer source for "/" and "?"
           "/" = {
-            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
-            sources = [{ name = "buffer"; }];
+            mapping = {
+              __raw = "cmp.mapping.preset.cmdline()";
+            };
+            sources = [ { name = "buffer"; } ];
           };
           "?" = {
-            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
-            sources = [{ name = "buffer"; }];
+            mapping = {
+              __raw = "cmp.mapping.preset.cmdline()";
+            };
+            sources = [ { name = "buffer"; } ];
           };
           # Use cmdline & path source for ":"
           ":" = {
-            mapping = { __raw = "cmp.mapping.preset.cmdline()"; };
+            mapping = {
+              __raw = "cmp.mapping.preset.cmdline()";
+            };
             sources = [
               { name = "path"; }
               {
                 name = "cmdline";
-                option = { ignore_cmds = [ "Man" "!" ]; };
+                option = {
+                  ignore_cmds = [
+                    "Man"
+                    "!"
+                  ];
+                };
               }
             ];
-            matching = { disallow_symbol_nonprefix_matching = false; };
+            matching = {
+              disallow_symbol_nonprefix_matching = false;
+            };
           };
         };
         window = {
-          completion = { border = "solid"; };
-          documentation = { border = "solid"; };
+          completion = {
+            border = "solid";
+          };
+          documentation = {
+            border = "solid";
+          };
         };
         snippet.expand = ''
           function(args)
@@ -340,17 +428,33 @@
       };
     };
 
-    cmp-nvim-lsp = { enable = true; };
-    cmp-nvim-lua = { enable = true; };
-    cmp-buffer = { enable = true; };
-    cmp-path = { enable = true; };
-    cmp_luasnip = { enable = true; };
-    cmp-cmdline = { enable = true; };
-    cmp-latex-symbols = { enable = true; };
+    cmp-nvim-lsp = {
+      enable = true;
+    };
+    cmp-nvim-lua = {
+      enable = true;
+    };
+    cmp-buffer = {
+      enable = true;
+    };
+    cmp-path = {
+      enable = true;
+    };
+    cmp_luasnip = {
+      enable = true;
+    };
+    cmp-cmdline = {
+      enable = true;
+    };
+    cmp-latex-symbols = {
+      enable = true;
+    };
 
     lspkind = {
       enable = true;
-      symbolMap = { Copilot = ""; };
+      symbolMap = {
+        Copilot = "";
+      };
       extraOptions = {
         maxwidth = 50;
         ellipsis_char = "...";
@@ -391,7 +495,9 @@
     # Indicate current context
     treesitter-context = {
       enable = true;
-      settings = { max_lines = 2; };
+      settings = {
+        max_lines = 2;
+      };
     };
 
     # Auto formatting
@@ -402,7 +508,9 @@
           lsp_format = "fallback";
           timeout_ms = 500;
         };
-        format_after_save = { lsp_format = "fallback"; };
+        format_after_save = {
+          lsp_format = "fallback";
+        };
         log_level = "warn";
         notify_on_error = true;
         notify_no_formatters = true;
@@ -425,7 +533,7 @@
         formatters = {
           codespell.command = lib.getExe pkgs.codespell;
           jq.command = lib.getExe pkgs.jq;
-          nixfmt.command = lib.getExe pkgs.nixfmt;
+          nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
           prettier.command = lib.getExe pkgs.nodePackages.prettier;
           rustfmt.command = lib.getExe pkgs.rustfmt;
           shfmt.command = lib.getExe pkgs.shfmt;
@@ -446,7 +554,9 @@
 
         notification.window.winblend = 0;
 
-        integration = { "nvim-tree".enable = true; };
+        integration = {
+          "nvim-tree".enable = true;
+        };
       };
     };
 
