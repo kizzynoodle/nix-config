@@ -30,6 +30,8 @@
         "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#desktop switch";
       "yoga-switch" =
         "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#yoga switch";
+      "thinkpad-switch" =
+        "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#thinkpad switch";
       # To enable bash which in turn enables starship and fish
       "nix-shell" = "nix-shell --command bash";
     };
