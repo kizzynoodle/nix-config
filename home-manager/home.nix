@@ -1,6 +1,11 @@
 # home.nix
 # Home manager configuration, import modules, set up basics
-{ inputs, homeStateVersion, user, ... }:
+{
+  inputs,
+  homeStateVersion,
+  user,
+  ...
+}:
 
 {
   # Import modules

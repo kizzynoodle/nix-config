@@ -77,6 +77,9 @@
     # Steam stuff
     # TODO: Make it only local for desktop config
     protonup
+    protontricks
+    wineWowPackages.waylandFull
+    winetricks
     # dxvk
 
     # Programming

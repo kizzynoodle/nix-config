@@ -5,8 +5,7 @@ let
   # mytex = pkgs.texlive.combine {
   #   inherit (pkgs.texlive) scheme-full;
   #   inherit (pkgs.texlive) collection-latexrecommended;
-  #   inherit (pkgs.texlive) collection-latexextra;
-  #   inherit (pkgs.texlive) collection-fontsrecommended;
+  #   inherit (pkgs.texlive) collection-latexextra; inherit (pkgs.texlive) collection-fontsrecommended;
   #   inherit (pkgs.texlive) collection-fontsextra;
   #   inherit (pkgs.texlive) collection-bibtexextra;
   #   inherit (pkgs.texlive) collection-langcyrillic;
@@ -41,8 +40,6 @@ in
 
     # Communication
     discord
-    vesktop
-    webcord
     telegram-desktop
 
     # Terminal utils
@@ -64,6 +61,7 @@ in
     # Media
     lutris
     ankama-launcher
+    bs-manager
     spotify
     spotify-player
     playerctl

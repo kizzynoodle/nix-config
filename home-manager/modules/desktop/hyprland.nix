@@ -1,16 +1,22 @@
 # hyprland.nix
 # Home Manager Hyprland configuration
-{ inputs, lib, pkgs, user, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  user,
+  ...
+}:
 let
   desktop-config-dir = "/home/${user}/.nix-config/home-manager/modules/desktop";
   waybar-config-dir = "${desktop-config-dir}/waybar";
-in {
+in
+{
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     # Enable hyprland as a NixOS module
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     plugins = [
       inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
@@ -28,6 +34,10 @@ in {
       ################
 
       monitor = ",preferred,auto,auto";
+      # monitor = [
+      #   "HDMI-A-1, 1920x1080, 0x0, 1"
+      #   "HDMI-A-2, 1920x1080, 1920x0, 1"
+      # ];
 
       #################
       ### VARIABLES ###
@@ -36,8 +46,7 @@ in {
       # Programs
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
-      "$menu" =
-        "wofi --show drun --allow-images --style=${desktop-config-dir}/wofi/wofi.css";
+      "$menu" = "wofi --show drun --allow-images --style=${desktop-config-dir}/wofi/wofi.css";
 
       # Super key
       "$mainMod" = "SUPER";
@@ -59,7 +68,10 @@ in {
       ### ENVIRONMENT VARIABLES ###
       #############################
 
-      env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
+      env = [
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+      ];
 
       #####################
       ### LOOK AND FEEL ###
@@ -133,7 +145,9 @@ in {
           ];
         };
 
-        hyprtrails = { color = "rgba(fe8019ff)"; };
+        hyprtrails = {
+          color = "rgba(fe8019ff)";
+        };
 
         hyprexpo = {
           columns = 3;
@@ -188,7 +202,9 @@ in {
       };
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-      master = { new_status = "dwindle"; };
+      master = {
+        new_status = "dwindle";
+      };
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
       misc = {
@@ -210,11 +226,15 @@ in {
 
         follow_mouse = 1;
         sensitivity = 0;
-        touchpad = { natural_scroll = false; };
+        touchpad = {
+          natural_scroll = false;
+        };
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
-      gestures = { workspace_swipe = false; };
+      gestures = {
+        workspace_swipe = false;
+      };
 
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
