@@ -42,7 +42,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixvim, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixvim,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -59,11 +65,18 @@
         }
       ];
 
-      makeSystem = { hostname, stateVersion }:
+      makeSystem =
+        { hostname, stateVersion }:
         nixpkgs.lib.nixosSystem {
           system = system;
           specialArgs = {
-            inherit inputs hostname stateVersion homeStateVersion user;
+            inherit
+              inputs
+              hostname
+              stateVersion
+              homeStateVersion
+              user
+              ;
           };
 
           modules = [
@@ -73,11 +86,14 @@
             inputs.nixvim.nixosModules.nixvim
           ];
         };
-    in {
-      nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
-        configs // {
-          "${host.hostname}" =
-            makeSystem { inherit (host) hostname stateVersion; };
-        }) { } hosts;
+    in
+    {
+      nixosConfigurations = nixpkgs.lib.foldl' (
+        configs: host:
+        configs
+        // {
+          "${host.hostname}" = makeSystem { inherit (host) hostname stateVersion; };
+        }
+      ) { } hosts;
     };
 }
