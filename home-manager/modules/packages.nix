@@ -5,15 +5,14 @@ let
   # mytex = pkgs.texlive.combine {
   #   inherit (pkgs.texlive) scheme-full;
   #   inherit (pkgs.texlive) collection-latexrecommended;
-  #   inherit (pkgs.texlive) collection-latexextra;
-  #   inherit (pkgs.texlive) collection-fontsrecommended;
+  #   inherit (pkgs.texlive) collection-latexextra; inherit (pkgs.texlive) collection-fontsrecommended;
   #   inherit (pkgs.texlive) collection-fontsextra;
   #   inherit (pkgs.texlive) collection-bibtexextra;
   #   inherit (pkgs.texlive) collection-langcyrillic;
   # };
 
-  mytex = pkgs.texliveFull.withPackages (ps:
-    with ps; [
+  mytex = pkgs.texliveFull.withPackages (
+    ps: with ps; [
       scheme-full
       collection-latexrecommended
       collection-latexextra
@@ -22,8 +21,10 @@ let
       collection-bibtexextra
       collection-langcyrillic
       lastpage
-    ]);
-in {
+    ]
+  );
+in
+{
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
@@ -33,15 +34,16 @@ in {
     gimp
     megasync
     mupdf
+    sxiv
     xournalpp
     zathura
 
     # Communication
     discord
-    vesktop
     telegram-desktop
 
     # Terminal utils
+    bc
     btop
     eza
     fastfetch
@@ -59,6 +61,7 @@ in {
     # Media
     lutris
     ankama-launcher
+    bs-manager
     spotify
     spotify-player
     playerctl
@@ -74,6 +77,7 @@ in {
 
     # Formatters
     codespell
+    nixfmt-rfc-style
     shfmt
     stylua
     jq

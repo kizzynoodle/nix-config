@@ -1,19 +1,27 @@
 # system.nix
 # This is a NixOS module that configures the system settings and services
-{ hostname, stateVersion, pkgs, ... }: {
+{
+  hostname,
+  stateVersion,
+  pkgs,
+  ...
+}:
+{
 
   # Hostname and state version defined in the flake.nix file
   networking.hostName = hostname;
   system.stateVersion = stateVersion;
 
-  boot.plymouth = {
-    enable = true;
-    theme = "rings";
-    themePackages = with pkgs;
-      [
+  boot = {
+    kernelParams = [ "kvm.enable_virt_at_load=0" ];
+    plymouth = {
+      enable = true;
+      theme = "rings";
+      themePackages = with pkgs; [
         # Install only selected themes
         (adi1090x-plymouth-themes.override { theme = "rings"; })
       ];
+    };
   };
 
   consoleLogLevel = 3;

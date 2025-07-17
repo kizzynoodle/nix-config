@@ -4,8 +4,10 @@
 # - Dual boot with Windows
 # - Steam support
 # - Dual monitor setup
-{ config, pkgs, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{ config, pkgs, ... }:
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
     # Specific modules
@@ -88,15 +90,24 @@
     };
   };
 
-  environment.sessionVariables = {
-    # Cursor invisibility problems
-    WRL_NO_HARDWARE_CURSORS = "1";
-    # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
+  environment = {
+
+    # Add ~/.local/bin/ to $PATH
+    localBinInPath = true;
+
+    sessionVariables = {
+
+      # Cursor invisibility problems
+      WRL_NO_HARDWARE_CURSORS = "1";
+      # Hint electron apps to use wayland
+      NIXOS_OZONE_WL = "1";
+    };
   };
 
   # Hyprland tweaks for Nvidia
-  programs.hyprland = { xwayland.enable = true; };
+  programs.hyprland = {
+    xwayland.enable = true;
+  };
 
   # }}}
 }

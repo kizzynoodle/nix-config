@@ -1,6 +1,7 @@
 # packages.nix
 # Environment packages at system level
-{ pkgs, ... }: {
+{ pkgs, user, ... }:
+{
   nix = {
     # Delete older generations automatically
     gc.automatic = true;
@@ -10,7 +11,10 @@
       auto-optimise-store = true;
 
       # Enable experimental features (such as flakes, home manager, etc.)
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
       # Enable Cachix to avoid rebuilding Hyprland
       substituters = [ "https://hyprland.cachix.org" ];
@@ -23,13 +27,26 @@
   # Enable networking package (network manager)
   networking.networkmanager.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-  # programs.brave.enable = true;
-  # programs.librewolf.enable = true;
+  # Some programs
+  programs = {
+    firefox.enable = true;
+    nixvim.enable = true;
+  };
 
-  # Install nixvim
-  programs.nixvim.enable = true;
+  # VirtualBox, with guest additions and extension pack
+  users.extraGroups.vboxusers.members = [ "${user}" ];
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableExtensionPack = true;
+      enableKvm = true;
+      addNetworkInterface = false;
+    };
+    guest = {
+      enable = true;
+      dragAndDrop = true;
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -37,9 +54,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Since default desktop environment is Plasma
-    # TODO: Move to user package instead of environment package
-    kdePackages.kate
+
+    # SDDM config
+    kdePackages.sddm-kcm
 
     # Install at system level
     home-manager
@@ -60,6 +77,9 @@
     # Steam stuff
     # TODO: Make it only local for desktop config
     protonup
+    protontricks
+    wineWowPackages.waylandFull
+    winetricks
     # dxvk
 
     # Programming
@@ -70,7 +90,7 @@
     nodejs
 
     # Desktop stuff
-    # TODO: Move over to 
+    # TODO: Move over to
     (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     }))

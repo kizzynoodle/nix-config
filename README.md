@@ -66,6 +66,6 @@ Add following features to Hyprland:
 
 ## Pipewire
 
-- [ ] Fix Discord notification issue
+- [x] Fix Discord notification issue
 - [ ] Fix Vesktop having no sound
 - [ ] Add mic system wide noise cancellation
