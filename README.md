@@ -38,9 +38,9 @@ NixOS system and home manager user configuration managed through flakes.
 
 Move following configs to Home Manager directory:
 
-- [ ] Waybar
-- [ ] Mako
-- [ ] Wofi
+- [x] Waybar
+- [x] Mako
+- [x] Wofi
 
 After configs have been moved:
 
