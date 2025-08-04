@@ -57,6 +57,7 @@ in
       #################
 
       exec-once = [
+        "systemctl --user start hyprpolkitagent"
         "nm-applet --indicator &"
         "waybar -c ${waybar-config-dir}/config.jsonc -s ${waybar-config-dir}/style.css &"
         "playerctld &"
