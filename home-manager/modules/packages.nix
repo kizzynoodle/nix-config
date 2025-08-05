@@ -50,6 +50,7 @@ in
     kitty
     megacmd
     neovim-remote
+    lunarvim
     ranger
     rustfmt
     speedtest-cli
@@ -71,10 +72,17 @@ in
     # Desktop stuff
     wttrbar
     brightnessctl
+    chromium
+    protonmail-bridge
+    protonmail-bridge-gui
+    protonmail-desktop
+    proton-pass
+    mullvad-browser
 
     # Programming
     mytex
     pandoc
+    python3Full
 
     # Formatters
     codespell
@@ -86,7 +94,12 @@ in
 
     # Video editing
     kdePackages.kdenlive
-    protonmail-desktop
     davinci-resolve
+
+    # Hardware
+    autokey
+    input-remapper
+    piper
+    unetbootin
   ];
 }

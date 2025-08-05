@@ -6,7 +6,7 @@ NixOS system and home manager user configuration managed through flakes.
 
 - [x] Add host and user configuration module
 - [x] Install NixOS on desktop and test new configuration
-- [x] Replace desktop host files with propper ones
+- [x] Replace desktop host files with proper ones
 - [x] Configure Nixvim
 - [x] Find and configure replacement shell for bash
 - [x] Create Pipewire module for NixOS
@@ -18,8 +18,8 @@ NixOS system and home manager user configuration managed through flakes.
 - [ ] Tree menu
 - [ ] Toggle terminal
 - [ ] Remove color from side bar
-    - Remove bg from LSP signs
-- [ ] Telescope 
+  - Remove bg from LSP signs
+- [ ] Telescope
 - [x] Nix LSP
 - [x] Latex LSP
 - [x] C++ LSP
@@ -37,21 +37,24 @@ NixOS system and home manager user configuration managed through flakes.
 ## Hyprland
 
 Move following configs to Home Manager directory:
-- [ ] Waybar
-- [ ] Mako
-- [ ] Wofi
+
+- [x] Waybar
+- [x] Mako
+- [x] Wofi
 
 After configs have been moved:
+
 - [x] Move Hyprland setup to Nix config
 - [ ] Move Waybar setup to Nix config
 - [ ] Move Mako setup to Nix config
 - [ ] Move Wofi setup to Nix config
 
 Add following features to Hyprland:
+
 - [x] Install and setup screenshot manager
 - [ ] Hyprbar setup
-    - [ ] Make em work
-    - [ ] Window rule to show hyprbar on floating windows
+  - [ ] Make em work
+  - [ ] Window rule to show hyprbar on floating windows
 - [ ] Hyprlock
 - [ ] Power menu
 
@@ -63,6 +66,6 @@ Add following features to Hyprland:
 
 ## Pipewire
 
-- [ ] Fix Discord notification issue
+- [x] Fix Discord notification issue
 - [ ] Fix Vesktop having no sound
-- [ ] Add mic system wide noise cancelation
+- [ ] Add mic system wide noise cancellation
