@@ -4,7 +4,12 @@
 # - Dual boot with Windows
 # - Steam support
 # - Dual monitor setup
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -16,6 +21,8 @@
     # Generic modules
     ../../nixos/default.nix
   ];
+
+  # {{{ BOOTLADER
 
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
@@ -32,17 +39,20 @@
       # device = "/dev/sda";
       device = "nodev";
       efiSupport = true;
-      #extraEntries = ''
-      #  menuentry "Windows 10" {
-      #    insmod part_gpt
-      #    insmod fat
-      #    search --no-floppy --fs-uuid --set=root 0412DACD12DAC2BA
-      #    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-      #  };
-      #'';
     };
   };
-  # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
+
+  # Need to set Thunderbolt to "BIOS Assist Mode"
+  boot.kernelParams = [ "acpi_backlight=native" ];
+
+  # }}}
+
+  # {{{ LAPTOP STUFFS
+
+  # Emulate mouse wheel on trackpoint
+  hardware.trackpoint.emulateWheel = true;
+
+  # }}}
 
   # {{{ NVIDIA
 
@@ -71,9 +81,9 @@
     nvidia = {
       modesetting.enable = true;
 
-      # Power management disabled on desktop
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
+      # Power management enabled on laptop
+      powerManagement.enable = true;
+      powerManagement.finegrained = true;
 
       # TODO: Figure out
       nvidiaPersistenced = false;
@@ -87,6 +97,20 @@
 
       # Latest package for graphics card (might have to change this as they keep updating)
       package = config.boot.kernelPackages.nvidiaPackages.latest;
+
+      prime = {
+
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+
+        # Bus ID of the Intel GPU
+        intelBusId = "PCI:0:2:0";
+
+        # Bus ID of the NVIDIA GPU
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
   };
 

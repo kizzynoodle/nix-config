@@ -25,7 +25,7 @@
         // "cpu_text",
         // "cpu",
         // "memory",
-        // "battery",
+        "battery",
         "network",
         "pulseaudio"
     ],
@@ -135,13 +135,14 @@
     },
 
     "battery": {
-        "format": "bat {capacity}%",
-        "interval": 5,
+        "interval": 60,
         "states": {
-            "warning": 20,
-            "critical": 10
+            "warning": 30,
+            "critical": 15
         },
-        "tooltip": false
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
     },
 
     "network": {

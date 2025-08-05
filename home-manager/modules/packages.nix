@@ -70,6 +70,7 @@ in
 
     # Desktop stuff
     wttrbar
+    brightnessctl
 
     # Programming
     mytex
