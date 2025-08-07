@@ -1,12 +1,13 @@
 # steam.nix
 # Steam config for gaming setup
 {
-  lib,
+  config,
   pkgs,
-  user,
+  lib,
   ...
 }:
 {
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [

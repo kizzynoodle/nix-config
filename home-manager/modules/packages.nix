@@ -72,11 +72,13 @@ in
     # Desktop stuff
     wttrbar
     brightnessctl
-    chromium
+    celeste
+    redact
     protonmail-bridge
     protonmail-bridge-gui
     protonmail-desktop
     proton-pass
+    chromium
     mullvad-browser
 
     # Programming
