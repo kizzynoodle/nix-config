@@ -19,9 +19,7 @@ in
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     plugins = [
       inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
     ];
 
     # Enable XWayland and SystemD startup
@@ -123,32 +121,6 @@ in
       };
 
       plugin = {
-
-        # TODO: Make it work :V
-        hyprbars = {
-          enabled = true;
-          bar_height = 16;
-          bar_color = "rgba(1d2021ff)";
-          "col.text" = "rgba(ebdbb2ff)";
-          bar_text_size = 10;
-          bar_text_font = "FiraCode Nerd Font";
-          bar_text_align = "left";
-          bar_title_enabled = true;
-          bar_part_of_window = true;
-          # bar_precedence_over_border = true;
-          # bar_button_padding = 10;
-          # bar_padding = 10;
-          bar_buttons_alignment = "right";
-          "hyprbars-button" = [
-            "rgba(fb4934ff), 20, , hyprctl dispatch killactive"
-            "rgba(b8bb26ff), 20, , hyprctl dispatch fullscreen 2"
-            "rgba(83a598ff), 20, , hyprctl dispatch togglefloating"
-          ];
-        };
-
-        hyprtrails = {
-          color = "rgba(fe8019ff)";
-        };
 
         hyprexpo = {
           columns = 3;

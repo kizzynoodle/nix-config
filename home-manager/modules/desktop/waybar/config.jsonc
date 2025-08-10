@@ -25,9 +25,10 @@
         // "cpu_text",
         // "cpu",
         // "memory",
-        // "battery",
+        "battery",
         "network",
-        "pulseaudio"
+        "pulseaudio",
+        "backlight"
     ],
 
     "custom/menu": {
@@ -135,31 +136,55 @@
     },
 
     "battery": {
-        "format": "bat {capacity}%",
-        "interval": 5,
+        "interval": 60,
         "states": {
-            "warning": 20,
-            "critical": 10
+            "warning": 30,
+            "critical": 15
         },
-        "tooltip": false
+        "format-full": "󰂄 100%",
+        "format-charging": "󰂄 {time}",
+        "format-discharging": "{icon} {time}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-time": "{H}:{M}",
+        "max-length": 25
     },
 
     "network": {
-        "format-wifi" : " {essid} ({signalStrength}%)",
-        "format-ethernet": " {bandwidthTotalBytes}",
-        "format-disconnected" : "󰖪 Disconnected",
         "interval": 1,
-        "tooltip": false
+        "format-wifi" : "{icon} {bandwidthTotalBytes}",
+        "format-ethernet": "  {bandwidthTotalBytes}",
+        "format-disconnected" : "", // Hide module if not connected
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{icon} ({signalStrength}%) {essid}",
+        "tooltip-format-ethernet": "{ifname} ",
+        "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
     },
 
     "pulseaudio": {
-        "scroll-step": 5,
-        "max-volume": 150,
-        "format": " {volume}%",
-        "format-bluetooth": "vol {volume}%",
-        "nospacing": 1,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "󰏳",
+            "car": "",
+            "default": ["", "", ""],
+            "default-muted": ""
+        },
+        "scroll-step": 1,
         "on-click": "pavucontrol",
+        "max-volume": 150,
+        "nospacing": 1,
         "tooltip": false
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
     },
 
     "mpris": {

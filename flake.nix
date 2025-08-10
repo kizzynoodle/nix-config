@@ -63,6 +63,10 @@
           hostname = "desktop";
           stateVersion = "24.11";
         }
+        {
+          hostname = "thinkpad";
+          stateVersion = "25.05";
+        }
       ];
 
       makeSystem =

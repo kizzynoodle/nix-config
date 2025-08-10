@@ -71,7 +71,9 @@ in
 
     # Desktop stuff
     wttrbar
-    chromium
+    brightnessctl
+    celeste
+    redact
     protonmail-bridge
     protonmail-bridge-gui
     protonmail-desktop
@@ -79,6 +81,7 @@ in
     protonvpn-gui
     celeste
     wireguard-tools
+    chromium
     mullvad-browser
 
     # Programming
