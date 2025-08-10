@@ -76,6 +76,9 @@ in
     protonmail-bridge-gui
     protonmail-desktop
     proton-pass
+    protonvpn-gui
+    celeste
+    wireguard-tools
     mullvad-browser
 
     # Programming
