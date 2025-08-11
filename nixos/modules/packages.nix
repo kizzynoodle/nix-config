@@ -129,7 +129,10 @@ in
     networkmanagerapplet
 
     # Media stuff
+    sof-firmware
+    alsa-utils
     pavucontrol
+    pwvucontrol
     qjackctl
     mpv
 

@@ -43,7 +43,12 @@
   };
 
   # Need to set Thunderbolt to "BIOS Assist Mode"
-  boot.kernelParams = [ "acpi_backlight=native" ];
+  boot = {
+    kernelParams = [
+      "acpi_backlight=native"
+      "snd_hda_intel.dmic_detect=0"
+    ];
+  };
 
   # }}}
 
