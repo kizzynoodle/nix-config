@@ -24,7 +24,13 @@
     "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [
+    "kvm-intel"
+
+    # Meteor Lake-P HD modules
+    "snd-hda-intel"
+    "snd-sof-pci-intel-mtl"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
