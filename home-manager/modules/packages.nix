@@ -41,6 +41,9 @@ in
     # Communication
     discord
     telegram-desktop
+    element-desktop
+    signal-desktop
+    # TODO: install matrix and element
 
     # Terminal utils
     bc
@@ -79,7 +82,6 @@ in
     protonmail-desktop
     proton-pass
     protonvpn-gui
-    celeste
     wireguard-tools
     chromium
     mullvad-browser
