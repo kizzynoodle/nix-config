@@ -1,6 +1,9 @@
 # pipewire.nix
 # System wide settings for pipewire
 {
+  # Sound card state persistence fix
+  hardware.alsa.enablePersistence = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
