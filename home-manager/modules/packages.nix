@@ -67,7 +67,10 @@ in
     ankama-launcher
     bs-manager
     spotify
+    spotify-qt
     spotify-player
+    spotify-cli-linux
+    psst
     playerctl
     vlc
     obs-studio
