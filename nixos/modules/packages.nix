@@ -63,10 +63,6 @@ in
       enableKvm = true;
       addNetworkInterface = false;
     };
-    guest = {
-      enable = true;
-      dragAndDrop = true;
-    };
   };
 
   # Allow unfree packages
