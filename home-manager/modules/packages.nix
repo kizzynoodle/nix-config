@@ -101,7 +101,7 @@ in
 
     # Video editing
     kdePackages.kdenlive
-    davinci-resolve
+    # davinci-resolve
 
     # Hardware
     autokey

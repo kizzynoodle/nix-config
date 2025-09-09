@@ -1,6 +1,7 @@
 # stylix.nix
-# Themeing home manager options
-{ lib, pkgs, ... }: {
+# Theming home manager options
+{ lib, pkgs, ... }:
+{
   stylix.targets = {
     kitty.enable = true;
     hyprland.enable = true;
@@ -8,13 +9,16 @@
     mako.enable = true;
     waybar.enable = true;
     wofi.enable = true;
-    nixvim.enable = false;
+    nixvim = {
+      enable = true;
+      plugin = "base16-nvim";
 
-    # nixvim.transparentBackground = {
-    ## main = true;
-    ## numberLine = true;
-    ## signColumn = true;
-    # };
+      transparentBackground = {
+        main = true;
+        numberLine = true;
+        signColumn = true;
+      };
+    };
   };
 
   # TODO: Figure out how to customize qt and gtk through stylix

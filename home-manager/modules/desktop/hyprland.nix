@@ -18,7 +18,7 @@ in
     # Enable hyprland as a NixOS module
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     plugins = [
-      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
 
@@ -205,9 +205,9 @@ in
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
-      gestures = {
-        workspace_swipe = false;
-      };
+      # gestures = {
+      #   workspace_swipe = false;
+      # };
 
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
@@ -273,7 +273,7 @@ in
         "ALT SHIFT, TAB, workspace, e-1"
 
         # Workspace overview
-        "$mainMod, TAB, overview:toggle, all"
+        # "$mainMod, TAB, overview:toggle, all"
         "$shiftMod, TAB, hyprexpo:expo, toggle"
 
         # Screenshot

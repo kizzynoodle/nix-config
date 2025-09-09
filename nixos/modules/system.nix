@@ -13,28 +13,29 @@
   system.stateVersion = stateVersion;
 
   boot = {
-    kernelParams = [ "kvm.enable_virt_at_load=0" ];
+    kernelParams = [
+      "kvm.enable_virt_at_load=0"
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
     plymouth = {
       enable = true;
-      theme = "rings";
-      themePackages = with pkgs; [
-        # Install only selected themes
-        (adi1090x-plymouth-themes.override { theme = "rings"; })
-      ];
+      # theme = "rings";
+      # themePackages = with pkgs; [
+      #   # Install only selected themes
+      #   (adi1090x-plymouth-themes.override { theme = "rings"; })
+      # ];
     };
-  };
+    consoleLogLevel = 3;
 
-  consoleLogLevel = 3;
-  initrd.verbose = false;
-  kernelParams = [
-    "quiet"
-    "splash"
-    "boot.shell_on_fail"
-    "udev.log_priority=3"
-    "rd.systemd.show_status=auto"
-  ];
-  # Hide the OS choice for bootloaders.
-  # It's still possible to open the bootloader list by pressing any key
-  # It will just not appear on screen unless a key is pressed
-  loader.timeout = 0;
+    initrd.verbose = false;
+
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+  };
 }

@@ -136,6 +136,10 @@ in
     qjackctl
     mpv
 
+    # Hardware
+    bluez
+    bluez-tools
+
     # Fonts
     nerd-fonts.terminess-ttf
   ];
