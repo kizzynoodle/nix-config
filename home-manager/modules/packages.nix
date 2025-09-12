@@ -65,9 +65,11 @@ in
     # Media
     lutris
     ankama-launcher
+    starsector
     bs-manager
     spotify
     spotify-player
+    spotify-qt
     playerctl
     vlc
     obs-studio
@@ -80,16 +82,19 @@ in
     protonmail-bridge
     protonmail-bridge-gui
     protonmail-desktop
+    chromium
+    mullvad-browser
+
+    # Encryption stuff
     proton-pass
     protonvpn-gui
     wireguard-tools
-    chromium
-    mullvad-browser
 
     # Programming
     mytex
     pandoc
-    python3Full
+    # python3Full
+    python314Full
 
     # Formatters
     codespell
