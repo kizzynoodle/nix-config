@@ -122,7 +122,11 @@
     nvim-tree = {
       enable = true;
       openOnSetupFile = true;
-      autoReloadOnWrite = true;
+      # DEPRECATED:
+      # autoReloadOnWrite = true;
+      settings = {
+        auto_reload_on_write = true;
+      };
     };
 
     # Transparency
@@ -452,12 +456,12 @@
 
     lspkind = {
       enable = true;
-      symbolMap = {
-        Copilot = "";
-      };
-      extraOptions = {
+      settings = {
         maxwidth = 50;
         ellipsis_char = "...";
+        symbol_map = {
+          Copilot = "";
+        };
       };
     };
 

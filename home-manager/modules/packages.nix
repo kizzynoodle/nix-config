@@ -26,6 +26,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
 
   home.packages = with pkgs; [
 
@@ -70,6 +71,8 @@ in
     spotify
     spotify-player
     spotify-qt
+    spotify-cli-linux
+    psst
     playerctl
     vlc
     obs-studio
@@ -94,7 +97,7 @@ in
     mytex
     pandoc
     # python3Full
-    python314Full
+    # python314Full
 
     # Formatters
     codespell
@@ -106,12 +109,20 @@ in
 
     # Video editing
     kdePackages.kdenlive
-    davinci-resolve
+    # davinci-resolve
 
     # Hardware
     autokey
     input-remapper
     piper
     unetbootin
+
+    # Remarkable
+    remarkable-mouse
+    rmview
+    rmfuse
+
+    # Internet
+    qbittorrent-enhanced
   ];
 }

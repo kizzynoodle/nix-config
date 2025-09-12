@@ -63,10 +63,6 @@ in
       enableKvm = true;
       addNetworkInterface = false;
     };
-    guest = {
-      enable = true;
-      dragAndDrop = true;
-    };
   };
 
   # Allow unfree packages
@@ -138,6 +134,10 @@ in
     pwvucontrol
     qjackctl
     mpv
+
+    # Hardware
+    bluez
+    bluez-tools
 
     # Fonts
     nerd-fonts.terminess-ttf

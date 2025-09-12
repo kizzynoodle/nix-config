@@ -16,11 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #    nvf = {
-    #      url = "github:notashelf/nvf";
-    #      inputs.nixpkgs.follows = "nixpkgs";
-    #    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,11 +28,6 @@
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
     };
   };

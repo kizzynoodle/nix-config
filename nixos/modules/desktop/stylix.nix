@@ -4,11 +4,11 @@
 { pkgs, ... }:
 
 {
-  # Themeing
+  # Theming
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ./wallpaper.png;
+    image = ./wallpaper2.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     polarity = "dark";
 

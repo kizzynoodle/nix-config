@@ -1,18 +1,28 @@
 # pipewire.nix
 # System wide settings for pipewire
 {
-  # Enable sound with pipewire.
+  # Sound card state persistence fix
+  hardware.alsa.enablePersistence = true;
+
+  # Use pipewire, the modern sound subsystem (originally hardware.pulseaudio)
   services.pulseaudio.enable = false;
+
+  # Enable Realtimekit for audio purposes
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
+    # Uncomment to use for JACK applications
     jack.enable = true;
+
     wireplumber.enable = true;
 
     extraConfig = {
+      # Low latency
       pipewire = {
         "92-low-latency" = {
           "context.properties" = {
@@ -26,6 +36,7 @@
       };
 
       pipewire-pulse = {
+        # Low latency pipewire pulse
         "92-low-latency" = {
           context.modules = [
             {
@@ -61,5 +72,10 @@
         ];
       };
     };
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
   };
 }

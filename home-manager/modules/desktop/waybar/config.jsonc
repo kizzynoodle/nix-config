@@ -136,7 +136,7 @@
     },
 
     "battery": {
-        "interval": 60,
+        "interval": 1,
         "states": {
             "warning": 30,
             "critical": 15
@@ -175,7 +175,7 @@
             "default-muted": ""
         },
         "scroll-step": 1,
-        "on-click": "pavucontrol",
+        "on-click": "pwvucontrol",
         "max-volume": 150,
         "nospacing": 1,
         "tooltip": false
@@ -190,7 +190,7 @@
     "mpris": {
         "format": "{player_icon} {dynamic} ",
         "format-paused": "{status_icon} <i>{dynamic}</i> ",
-        "dynamic-order": [ "position", "length", "artist", "title" ],
+        "dynamic-order": [ "position", "length" ],
         "dynamic-len": 50,
         "enable-tooltip-len-limits": true,
         "player-icons": {

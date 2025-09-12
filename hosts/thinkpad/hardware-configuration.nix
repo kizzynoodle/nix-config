@@ -14,6 +14,9 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  # Use the latest kernel packages
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "thunderbolt"
@@ -23,7 +26,10 @@
     "sd_mod"
     "rtsx_pci_sdmmc"
   ];
-  boot.initrd.kernelModules = [ ];
+
+  # Load XE Intel driver
+  boot.initrd.kernelModules = [ "xe" ];
+
   boot.kernelModules = [
     "kvm-intel"
 

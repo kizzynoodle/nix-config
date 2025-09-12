@@ -5,5 +5,6 @@
     ./packages.nix
     ./pipewire.nix
     ./user.nix
+    ./system.nix
   ];
 }

@@ -13,7 +13,7 @@
 
     # Set colorscheme
     # TODO: Let stylix manage color scheme
-    colorschemes.gruvbox.enable = true;
+    # colorschemes.gruvbox.enable = true;
 
     # Set global options
     globals = {
@@ -36,7 +36,11 @@
       termguicolors = true;
 
       # Better completion experience
-      completeopt = [ "menuone" "noselect" "noinsert" ];
+      completeopt = [
+        "menuone"
+        "noselect"
+        "noinsert"
+      ];
 
       # Always show sign column (so text isn't shifted)
       signcolumn = "yes";
