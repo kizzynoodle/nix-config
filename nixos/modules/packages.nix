@@ -136,6 +136,10 @@ in
     bluez
     bluez-tools
 
+    # Containers
+    docker
+    kubernetes
+
     # Fonts
     nerd-fonts.terminess-ttf
   ];
