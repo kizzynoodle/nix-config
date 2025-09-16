@@ -74,6 +74,9 @@ in
 
     # SDDM config
     kdePackages.sddm-kcm
+    kdePackages.kwallet-pam
+    gnupg
+    pam_gnupg
 
     # Install at system level
     home-manager

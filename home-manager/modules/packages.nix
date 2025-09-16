@@ -26,6 +26,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
 
   home.packages = with pkgs; [
 
@@ -65,10 +66,11 @@ in
     # Media
     lutris
     ankama-launcher
+    starsector
     bs-manager
     spotify
-    spotify-qt
     spotify-player
+    spotify-qt
     spotify-cli-linux
     psst
     playerctl
@@ -83,16 +85,19 @@ in
     protonmail-bridge
     protonmail-bridge-gui
     protonmail-desktop
+    chromium
+    mullvad-browser
+
+    # Encryption stuff
     proton-pass
     protonvpn-gui
     wireguard-tools
-    chromium
-    mullvad-browser
 
     # Programming
     mytex
     pandoc
-    python3Full
+    # python3Full
+    # python314Full
 
     # Formatters
     codespell
@@ -111,5 +116,13 @@ in
     input-remapper
     piper
     unetbootin
+
+    # Remarkable
+    remarkable-mouse
+    rmview
+    rmfuse
+
+    # Internet
+    qbittorrent-enhanced
   ];
 }

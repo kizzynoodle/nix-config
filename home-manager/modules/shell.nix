@@ -1,9 +1,10 @@
 # shell.nix
 # Shell configuration for home manager, default shell and plugins
 { user, ... }:
-
 {
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   # Fish
   programs.fish = {
@@ -19,17 +20,22 @@
 
       # Disable fish greeting
       set fish_greeting
+
+      # Start ssh-agent
+      if status --is-interactive
+        if test -z "$SSH_AUTH_SOCK"
+          ssh-agent -c | source
+        end
+      end
     '';
 
-    # Shell alises
+    # Shell aliases
     shellAliases = {
       # Use eza instead of ls for icons
       ls = "eza --icons";
       # Aliases for updating different configurations
-      "desktop-switch" =
-        "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#desktop switch";
-      "yoga-switch" =
-        "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#yoga switch";
+      "desktop-switch" = "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#desktop switch";
+      "yoga-switch" = "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#yoga switch";
       "thinkpad-switch" =
         "sudo nixos-rebuild --upgrade --flake /home/${user}/.nix-config/#thinkpad switch";
       # To enable bash which in turn enables starship and fish
@@ -43,7 +49,9 @@
     settings = {
       add_newline = false;
       # Default deleted icon not available in Nerd Fonts
-      git_status = { deleted = ""; };
+      git_status = {
+        deleted = "";
+      };
     };
   };
 }
