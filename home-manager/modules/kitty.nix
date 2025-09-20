@@ -1,6 +1,7 @@
 # kitty.nix
 # Home manager kit config settings
-{ lib, ... }: {
+{ lib, ... }:
+{
   programs.kitty = lib.mkForce {
     enable = true;
     settings = {
@@ -12,8 +13,13 @@
       tab_bar_edge = "bottom";
       tab_bar_style = "powerline";
       tab_powerline_style = "slanted";
-      tab_title_template =
-        "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+      tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+      keybindings = {
+        next_window = "ctrl+shift+k";
+        previous_window = "ctrl+shift+j";
+        copy = "ctrl+shift+c";
+        paste = "ctrl+shift+v";
+      };
     };
   };
 }
