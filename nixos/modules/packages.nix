@@ -109,6 +109,9 @@ in
     clang
     cmake
     nodejs
+    python3
+    mongodb
+    redis
 
     # Desktop stuff
     # TODO: Move over to
@@ -138,6 +141,10 @@ in
     # Hardware
     bluez
     bluez-tools
+
+    # Containers
+    docker
+    kubernetes
 
     # Fonts
     nerd-fonts.terminess-ttf
