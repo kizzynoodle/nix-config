@@ -15,7 +15,7 @@
   boot = {
     kernelParams = [
       "kvm.enable_virt_at_load=0"
-      "quiet"
+      # "quiet"
       "splash"
       "boot.shell_on_fail"
       "udev.log_priority=3"

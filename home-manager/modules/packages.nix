@@ -11,18 +11,18 @@ let
   #   inherit (pkgs.texlive) collection-langcyrillic;
   # };
 
-  mytex = pkgs.texliveFull.withPackages (
-    ps: with ps; [
-      scheme-full
-      collection-latexrecommended
-      collection-latexextra
-      collection-fontsrecommended
-      collection-fontsextra
-      collection-bibtexextra
-      collection-langcyrillic
-      lastpage
-    ]
-  );
+  # mytex = pkgs.texliveFull.withPackages (
+  #   ps: with ps; [
+  #     scheme-full
+  #     collection-latexrecommended
+  #     collection-latexextra
+  #     collection-fontsrecommended
+  #     collection-fontsextra
+  #     collection-bibtexextra
+  #     collection-langcyrillic
+  #     lastpage
+  #   ]
+  # );
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -52,6 +52,7 @@ in
     eza
     fastfetch
     kitty
+    kitty-img
     megacmd
     neovim-remote
     lunarvim
@@ -76,6 +77,8 @@ in
     playerctl
     vlc
     obs-studio
+    milkytracker
+    freetube
 
     # Desktop stuff
     wttrbar
@@ -94,8 +97,9 @@ in
     wireguard-tools
 
     # Programming
-    mytex
+    # mytex
     pandoc
+    texlive.combined.scheme-full
     # python3Full
     # python314Full
 
