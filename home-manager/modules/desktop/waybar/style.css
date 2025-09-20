@@ -16,7 +16,7 @@
 
 window#waybar {
   background: #1d2021;
-  border: 2px solid #3c3836;
+  border-bottom: 2px solid #3c3836;
 }
 
 /* make window module transparent when no windows present */

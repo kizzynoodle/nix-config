@@ -14,12 +14,8 @@
       tab_bar_style = "powerline";
       tab_powerline_style = "slanted";
       tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
-      keybindings = {
-        next_window = "ctrl+shift+k";
-        previous_window = "ctrl+shift+j";
-        copy = "ctrl+shift+c";
-        paste = "ctrl+shift+v";
-      };
+
+      # Figure out how to do keybinds for Kitty in NixOS
     };
   };
 }

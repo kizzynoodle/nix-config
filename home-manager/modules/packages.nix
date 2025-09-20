@@ -37,7 +37,7 @@ in
     mupdf
     sxiv
     xournalpp
-    zathura
+    (pkgs.zathura.override { plugins = with pkgs.zathuraPkgs; [ zathura_pdf_mupdf ]; })
 
     # Communication
     discord

@@ -5,6 +5,7 @@
 
     # Specific package modules
     ./kitty.nix
+    ./zathura.nix
     ./git.nix
     ./shell.nix
     ./stylix.nix

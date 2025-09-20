@@ -80,8 +80,8 @@ in
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 0;
+        gaps_out = 0;
         border_size = 2;
         "col.active_border" = lib.mkForce "rgba(fe8019ff)";
         "col.inactive_border" = lib.mkForce "rgba(3c3836ff)";
@@ -102,7 +102,7 @@ in
 
         # Change transparency of focused and unfocused windows
         active_opacity = 1.0;
-        inactive_opacity = 1.0;
+        inactive_opacity = 0.95;
 
         shadow = {
           enabled = true;
@@ -119,22 +119,6 @@ in
           vibrancy = 0.1696;
         };
       };
-
-      # plugin = {
-
-      #   # hyprexpo = {
-      #   #   columns = 3;
-      #   #   gap_size = 5;
-      #   #   bg_col = "rgb(111111)";
-      #   #   # [center/first] [workspace] e.g. first 1 or center m+1
-      #   #   workspace_method = "center current";
-
-      #   #   enable_gesture = true; # laptop touchpad
-      #   #   gesture_fingers = 3; # 3 or 4
-      #   #   gesture_distance = 300; # how far is the "max"
-      #   #   gesture_positive = true; # positive = swipe down. Negative = swipe up.
-      #   # };
-      # };
 
       # https://wiki.hyprland.org/Configuring/Variables/#animations
       animations = {
