@@ -9,6 +9,14 @@
     mako.enable = true;
     waybar.enable = true;
     wofi.enable = true;
+    zathura = {
+      enable = true;
+      # style = lib.mkAfter ''
+      #   * {
+      #     background: rgba(0, 0, 0, 0.2);
+      #   }
+      # '';
+    };
     nixvim = {
       enable = true;
       plugin = "base16-nvim";

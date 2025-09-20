@@ -96,6 +96,7 @@ in
     # Programming
     mytex
     pandoc
+    python3
     # python3Full
     # python314Full
 
@@ -109,6 +110,8 @@ in
 
     # Video editing
     kdePackages.kdenlive
+    blueman
+    kdePackages.bluedevil
     # davinci-resolve
 
     # Hardware

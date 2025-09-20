@@ -259,6 +259,8 @@
 
     # {{{ LSP
 
+    # Copilot
+
     # LSP
     lsp = {
       enable = true;
@@ -544,6 +546,11 @@
           stylua.command = lib.getExe pkgs.stylua;
         };
       };
+    };
+
+    wrapping = {
+      enable = true;
+      # TODO: Per file syntax
     };
 
     # LSP Message and notif daemon
