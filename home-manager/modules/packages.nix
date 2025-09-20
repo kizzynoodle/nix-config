@@ -99,11 +99,8 @@ in
     # Programming
     # mytex
     pandoc
-<<<<<<< HEAD
     texlive.combined.scheme-full
-=======
     python3
->>>>>>> c10ee6fed016a93cb789175e8cd947d6073e51e4
     # python3Full
     # python314Full
 

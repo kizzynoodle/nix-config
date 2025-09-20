@@ -1,2 +1,2 @@
 # Git ignore for Nix Dotfiles
-flake.lock
+./flake.lock
