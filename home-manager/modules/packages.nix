@@ -112,6 +112,9 @@ in
     jq
     nodePackages.prettier
 
+    # LSP
+    ltex-ls
+
     # Video editing
     kdePackages.kdenlive
     blueman

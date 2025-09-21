@@ -83,7 +83,8 @@ in
         gaps_in = 0;
         gaps_out = 0;
         border_size = 2;
-        "col.active_border" = lib.mkForce "rgba(fe8019ff)";
+        # "col.active_border" = lib.mkForce "rgba(fe8019ff)";
+        "col.active_border" = lib.mkForce "rgba(665c54ff)";
         "col.inactive_border" = lib.mkForce "rgba(3c3836ff)";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
