@@ -313,8 +313,15 @@
       };
     };
 
+    friendly-snippets = {
+      enable = true;
+    };
+
     luasnip = {
       enable = true;
+      fromVscode = [
+        { }
+      ];
     };
 
     copilot-lua = {
