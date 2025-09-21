@@ -11,18 +11,18 @@ let
   #   inherit (pkgs.texlive) collection-langcyrillic;
   # };
 
-  # mytex = pkgs.texliveFull.withPackages (
-  #   ps: with ps; [
-  #     scheme-full
-  #     collection-latexrecommended
-  #     collection-latexextra
-  #     collection-fontsrecommended
-  #     collection-fontsextra
-  #     collection-bibtexextra
-  #     collection-langcyrillic
-  #     lastpage
-  #   ]
-  # );
+  mytex = pkgs.texliveFull.withPackages (
+    ps: with ps; [
+      scheme-full
+      collection-latexrecommended
+      collection-latexextra
+      collection-fontsrecommended
+      collection-fontsextra
+      collection-bibtexextra
+      collection-langcyrillic
+      lastpage
+    ]
+  );
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -97,9 +97,9 @@ in
     wireguard-tools
 
     # Programming
-    # mytex
+    mytex
     pandoc
-    texlive.combined.scheme-full
+    # texlive.combined.scheme-full
     python3
     # python3Full
     # python314Full
