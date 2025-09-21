@@ -92,6 +92,12 @@
 
       # Start scrolling when cursor is X lines away from top/bottom
       scrolloff = 5;
+
+      # Wrapping options
+      wrap = true;
+      # linebreak = true;
+      textwidth = 80;
+      formatoptions = "tcqj";
     };
 
     # {{{ Highlight overrides

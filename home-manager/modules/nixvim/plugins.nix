@@ -548,11 +548,6 @@
       };
     };
 
-    wrapping = {
-      enable = true;
-      # TODO: Per file syntax
-    };
-
     # LSP Message and notif daemon
     fidget = {
       enable = true;
