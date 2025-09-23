@@ -4,7 +4,8 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,18 +16,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # base16.url = "github:SenchoPens/base16.nix";
-
-    # tt-schemes = {
-    #   url = "github:tinted-theming/schemes";
-    #   flake = false;
-    # };
-
-    # base16-zathura = {
-    #   url = "github:haozeke/base16-zathura";
-    #   flake = false;
-    # };
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -86,10 +75,6 @@
             inputs.home-manager.nixosModules.default
             inputs.stylix.nixosModules.stylix
             inputs.nixvim.nixosModules.nixvim
-            # TODO: Set colorscheme for zathura using base16
-            # inputs.base16.nixosModule
-            # { scheme = "${inputs.tt-schemes}/base16/gruvbox.yaml"; }
-            # { scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml"; }
           ];
         };
     in
