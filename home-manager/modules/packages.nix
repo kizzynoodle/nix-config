@@ -113,8 +113,8 @@ in
 
     # Video editing
     kdePackages.kdenlive
-    blueman
     kdePackages.bluedevil
+    blueman
     # davinci-resolve
 
     # Hardware
