@@ -8,7 +8,8 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    image = ./wallpaper2.png;
+    # image = ./wallpaper2.png;
+    image = ./one_piece.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     polarity = "dark";
 
