@@ -5,15 +5,15 @@ let
   tex = (
     pkgs.texlive.combine {
       inherit (pkgs.texlive)
-        scheme-full
-        #collection-latexrecommended
-        #collection-latexextra
-        #collection-fontsrecommended
-        #collection-fontsextra
-        #collection-bibtexextra
-        #collection-langcyrillic
-        #lastpage
-        #tcolorbox
+        scheme-medium
+        collection-latexrecommended
+        collection-latexextra
+        collection-fontsrecommended
+        collection-fontsextra
+        collection-bibtexextra
+        collection-langcyrillic
+        lastpage
+        tcolorbox
         ;
       #(setq org-latex-compiler "lualatex")
       #(setq org-preview-latex-default-process 'dvisvgm)
@@ -93,12 +93,16 @@ in
     wireguard-tools
 
     # Programming
-    #tex
-    texlive.combined.scheme-full
+    cargo
+    rustc
+    clang
+    cmake
+    tex
     pandoc
     python3
-    # python3Full
-    # python314Full
+    nodejs
+    mongodb
+    redis
 
     # Formatters
     codespell
@@ -130,5 +134,7 @@ in
 
     # Internet
     qbittorrent-enhanced
+    librewolf
+    brave
   ];
 }

@@ -49,10 +49,7 @@ in
   networking.networkmanager.enable = true;
 
   # Some programs
-  programs = {
-    firefox.enable = true;
-    nixvim.enable = true;
-  };
+  programs.firefox.enable = true;
 
   # VirtualBox, with guest additions and extension pack
   users.extraGroups.vboxusers.members = [ "${user}" ];
@@ -81,10 +78,6 @@ in
     # Install at system level
     home-manager
 
-    # Browsers
-    librewolf
-    brave
-
     # Utils
     vim
     curl
@@ -102,16 +95,6 @@ in
     wineWowPackages.waylandFull
     winetricks
     # dxvk
-
-    # Programming
-    cargo
-    rustc
-    clang
-    cmake
-    nodejs
-    python3
-    mongodb
-    redis
 
     # Desktop stuff
     # TODO: Move over to
