@@ -18,6 +18,7 @@
         enable = true;
         useWallpaper = true;
       };
+      gnome.enable = false;
     };
 
     # Font

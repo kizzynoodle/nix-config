@@ -36,7 +36,7 @@
     enable = true;
 
     # platform theme "gtk" or "gnome"
-    # platformTheme = lib.mkForce "gtk";
+    #platformTheme = lib.mkForce "gtk";
 
     # Name and package of qt theme
     # style.name = lib.mkForce "gtk";

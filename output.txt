@@ -1,0 +1,563 @@
+unpacking 1 channels...
+warning: Git tree '/home/kizzy/.nix-config' is dirty
+building the system configuration...
+warning: Git tree '/home/kizzy/.nix-config' is dirty
+error:
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1566:14:
+         1565|         zipAttrsWith (
+         1566|           n: values:
+             |              ^
+         1567|           let
+
+       … while calling the 'head' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1571:13:
+         1570|           if length values == 1 || pred here (elemAt values 1) (head values) then
+         1571|             head values
+             |             ^
+         1572|           else
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1083:7:
+         1082|     // {
+         1083|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+         1084|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `system.build.toplevel':
+
+       … while evaluating the attribute 'mergedValue'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1130:5:
+         1129|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+         1130|     mergedValue =
+             |     ^
+         1131|       if isDefined then
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1131:7:
+         1130|     mergedValue =
+         1131|       if isDefined then
+             |       ^
+         1132|         if all (def: type.check def.value) defsFinal then
+
+       … while evaluating the attribute 'values'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1124:9:
+         1123|       {
+         1124|         values = defs''';
+             |         ^
+         1125|         inherit (defs'') highestPrio;
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1118:11:
+         1117|           # Avoid sorting if we don't have to.
+         1118|           if any (def: def.value._type or "" == "order") defs''.values then
+             |           ^
+         1119|             sortProperties defs''.values
+
+       … while calling the 'any' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1118:14:
+         1117|           # Avoid sorting if we don't have to.
+         1118|           if any (def: def.value._type or "" == "order") defs''.values then
+             |              ^
+         1119|             sortProperties defs''.values
+
+       … while evaluating the attribute 'values'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1251:7:
+         1250|     {
+         1251|       values = concatMap (def: if getPrio def == highestPrio then [ (strip def) ] else [ ]) defs;
+             |       ^
+         1252|       inherit highestPrio;
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1251:16:
+         1250|     {
+         1251|       values = concatMap (def: if getPrio def == highestPrio then [ (strip def) ] else [ ]) defs;
+             |                ^
+         1252|       inherit highestPrio;
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1098:17:
+         1097|         # Process mkMerge and mkIf properties.
+         1098|         defs' = concatMap (
+             |                 ^
+         1099|           m:
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1099:11:
+         1098|         defs' = concatMap (
+         1099|           m:
+             |           ^
+         1100|           map (
+
+       … while calling the 'map' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1100:11:
+         1099|           m:
+         1100|           map (
+             |           ^
+         1101|             value:
+
+       … while evaluating definitions from `/nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/nixos/modules/system/activation/top-level.nix':
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1109:80:
+         1108|               }
+         1109|           ) (addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                ^
+         1110|         ) defs;
+
+       … while calling 'dischargeProperties'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1202:5:
+         1201|   dischargeProperties =
+         1202|     def:
+             |     ^
+         1203|     if def._type or "" == "merge" then
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1203:5:
+         1202|     def:
+         1203|     if def._type or "" == "merge" then
+             |     ^
+         1204|       concatMap dischargeProperties def.contents
+
+       … while evaluating the attribute 'value'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:770:21:
+          769|             inherit (module) file;
+          770|             inherit value;
+             |                     ^
+          771|           }) module.config
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/nixos/modules/system/activation/top-level.nix:80:26:
+           79|   # Handle assertions and warnings
+           80|   baseSystemAssertWarn = lib.asserts.checkAssertWarn config.assertions config.warnings baseSystem;
+             |                          ^
+           81|
+
+       … while calling 'checkAssertWarn'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/asserts.nix:193:27:
+          192|   checkAssertWarn =
+          193|     assertions: warnings: val:
+             |                           ^
+          194|     let
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/asserts.nix:197:5:
+          196|     in
+          197|     if failedAssertions != [ ] then
+             |     ^
+          198|       throw "\nFailed assertions:\n${concatStringsSep "\n" (map (x: "- ${x}") failedAssertions)}"
+
+       … while calling the 'map' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/asserts.nix:195:26:
+          194|     let
+          195|       failedAssertions = map (x: x.message) (filter (x: !x.assertion) assertions);
+             |                          ^
+          196|     in
+
+       … while calling the 'filter' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/asserts.nix:195:46:
+          194|     let
+          195|       failedAssertions = map (x: x.message) (filter (x: !x.assertion) assertions);
+             |                                              ^
+          196|     in
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/asserts.nix:195:54:
+          194|     let
+          195|       failedAssertions = map (x: x.message) (filter (x: !x.assertion) assertions);
+             |                                                      ^
+          196|     in
+
+       … in the argument of the not operator
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/asserts.nix:195:58:
+          194|     let
+          195|       failedAssertions = map (x: x.message) (filter (x: !x.assertion) assertions);
+             |                                                          ^
+          196|     in
+
+       … while evaluating the attribute 'assertion'
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/nixos/common.nix:156:35:
+          155|             flip map config.assertions (assertion: {
+          156|               inherit (assertion) assertion;
+             |                                   ^
+          157|               message = "${user} profile: ${assertion.message}";
+
+       … while evaluating the attribute 'assertion'
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:353:11:
+          352|         {
+          353|           assertion = platformTheme.name == "gnome" -> cfg.style.name != null && cfg.style.package != null;
+             |           ^
+          354|           message = ''
+
+       … in the left operand of the IMPL (->) operator
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:353:53:
+          352|         {
+          353|           assertion = platformTheme.name == "gnome" -> cfg.style.name != null && cfg.style.package != null;
+             |                                                     ^
+          354|           message = ''
+
+       … while evaluating the attribute 'name'
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:321:13:
+          320|             option = "qt.platformTheme.name";
+          321|             name = deprecateKde6 cfg.platformTheme.name "qt.platformTheme.name";
+             |             ^
+          322|             package = cfg.platformTheme.package;
+
+       … from call site
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:321:20:
+          320|             option = "qt.platformTheme.name";
+          321|             name = deprecateKde6 cfg.platformTheme.name "qt.platformTheme.name";
+             |                    ^
+          322|             package = cfg.platformTheme.package;
+
+       … while calling 'deprecateKde6'
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:295:15:
+          294|       deprecateKde6 =
+          295|         name: optionPath:
+             |               ^
+          296|         if name == "kde6" then
+
+       … while evaluating a branch condition
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:296:9:
+          295|         name: optionPath:
+          296|         if name == "kde6" then
+             |         ^
+          297|           lib.warn ''
+
+       … from call site
+         at /nix/store/iyflqbyv5xy5d9zak12c5g300i7piczi-source/modules/misc/qt.nix:321:34:
+          320|             option = "qt.platformTheme.name";
+          321|             name = deprecateKde6 cfg.platformTheme.name "qt.platformTheme.name";
+             |                                  ^
+          322|             package = cfg.platformTheme.package;
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1083:7:
+         1082|     // {
+         1083|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+         1084|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `home-manager.users.kizzy.qt.platformTheme.name':
+
+       (10 duplicate frames omitted)
+
+       … while evaluating definitions from `/nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/modules/qt/hm.nix':
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1109:80:
+         1108|               }
+         1109|           ) (addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                ^
+         1110|         ) defs;
+
+       … while calling 'dischargeProperties'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1202:5:
+         1201|   dischargeProperties =
+         1202|     def:
+             |     ^
+         1203|     if def._type or "" == "merge" then
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1203:5:
+         1202|     def:
+         1203|     if def._type or "" == "merge" then
+             |     ^
+         1204|       concatMap dischargeProperties def.contents
+
+       … while evaluating the attribute 'value'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:770:21:
+          769|             inherit (module) file;
+          770|             inherit value;
+             |                     ^
+          771|           }) module.config
+
+       … from call site
+         at /nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/modules/qt/hm.nix:81:30:
+           80|         style.name = recommendedStyle;
+           81|         platformTheme.name = config.stylix.targets.qt.platform;
+             |                              ^
+           82|       };
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1083:7:
+         1082|     // {
+         1083|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+         1084|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `home-manager.users.kizzy.stylix.targets.qt.platform':
+
+       … while evaluating the attribute 'mergedValue'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1130:5:
+         1129|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+         1130|     mergedValue =
+             |     ^
+         1131|       if isDefined then
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1131:7:
+         1130|     mergedValue =
+         1131|       if isDefined then
+             |       ^
+         1132|         if all (def: type.check def.value) defsFinal then
+
+       … while evaluating the attribute 'values'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1124:9:
+         1123|       {
+         1124|         values = defs''';
+             |         ^
+         1125|         inherit (defs'') highestPrio;
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1118:11:
+         1117|           # Avoid sorting if we don't have to.
+         1118|           if any (def: def.value._type or "" == "order") defs''.values then
+             |           ^
+         1119|             sortProperties defs''.values
+
+       … while calling the 'any' builtin
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1118:14:
+         1117|           # Avoid sorting if we don't have to.
+         1118|           if any (def: def.value._type or "" == "order") defs''.values then
+             |              ^
+         1119|             sortProperties defs''.values
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1118:19:
+         1117|           # Avoid sorting if we don't have to.
+         1118|           if any (def: def.value._type or "" == "order") defs''.values then
+             |                   ^
+         1119|             sortProperties defs''.values
+
+       … while evaluating the attribute 'value._type'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1248:67:
+         1247|       strip =
+         1248|         def: if def.value._type or "" == "override" then def // { value = def.value.content; } else def;
+             |                                                                   ^
+         1249|     in
+
+       … while evaluating the attribute 'value.content'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1381:22:
+         1380|     _type = "override";
+         1381|     inherit priority content;
+             |                      ^
+         1382|   };
+
+       … from call site
+         at /nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/stylix/home-manager-integration.nix:18:50:
+           17|         lib.mkIf (condition config) (
+           18|           lib.setAttrByPath path (lib.mkDefault (lib.getAttrFromPath path osConfig))
+             |                                                  ^
+           19|         )
+
+       … while calling 'getAttrFromPath'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:340:15:
+          339|   getAttrFromPath =
+          340|     attrPath: set:
+             |               ^
+          341|     attrByPath attrPath (abort ("cannot find attribute '" + concatStringsSep "." attrPath + "'")) set;
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:341:5:
+          340|     attrPath: set:
+          341|     attrByPath attrPath (abort ("cannot find attribute '" + concatStringsSep "." attrPath + "'")) set;
+             |     ^
+          342|
+
+       … while calling 'attrByPath'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:93:24:
+           92|   attrByPath =
+           93|     attrPath: default: set:
+             |                        ^
+           94|     let
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:110:5:
+          109|     in
+          110|     attrByPath' 0 set;
+             |     ^
+          111|
+
+       … while calling 'attrByPath''
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:97:12:
+           96|       attrByPath' =
+           97|         n: s:
+             |            ^
+           98|         (
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:106:35:
+          105|               in
+          106|               if s ? ${attr} then attrByPath' (n + 1) s.${attr} else default
+             |                                   ^
+          107|             )
+
+       (7 duplicate frames omitted)
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:106:55:
+          105|               in
+          106|               if s ? ${attr} then attrByPath' (n + 1) s.${attr} else default
+             |                                                       ^
+          107|             )
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1083:7:
+         1082|     // {
+         1083|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+         1084|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `stylix.targets.qt.platform':
+
+       (10 duplicate frames omitted)
+
+       … while evaluating definitions from `/nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/modules/qt/nixos.nix':
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1109:80:
+         1108|               }
+         1109|           ) (addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                ^
+         1110|         ) defs;
+
+       … while calling 'dischargeProperties'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1202:5:
+         1201|   dischargeProperties =
+         1202|     def:
+             |     ^
+         1203|     if def._type or "" == "merge" then
+
+       … from call site
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1207:31:
+         1206|       if isBool def.condition then
+         1207|         if def.condition then dischargeProperties def.content else [ ]
+             |                               ^
+         1208|       else
+
+       … while calling 'dischargeProperties'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1202:5:
+         1201|   dischargeProperties =
+         1202|     def:
+             |     ^
+         1203|     if def._type or "" == "merge" then
+
+       … while evaluating a branch condition
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1203:5:
+         1202|     def:
+         1203|     if def._type or "" == "merge" then
+             |     ^
+         1204|       concatMap dischargeProperties def.contents
+
+       … while evaluating the attribute 'content'
+         at /nix/store/8f82n9hqi52fk1i2fvznh4qd85a4g595-source/lib/modules.nix:1362:23:
+         1361|     _type = "if";
+         1362|     inherit condition content;
+             |                       ^
+         1363|   };
+
+       … while evaluating a branch condition
+         at /nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/modules/qt/nixos.nix:30:9:
+           29|       stylix.targets.qt.platform =
+           30|         if gnome.enable && !(plasma6.enable || lxqt.enable) then
+             |         ^
+           31|           "gnome"
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/modules/qt/nixos.nix:30:25:
+           29|       stylix.targets.qt.platform =
+           30|         if gnome.enable && !(plasma6.enable || lxqt.enable) then
+             |                         ^
+           31|           "gnome"
+
+       error: attribute 'gnome' missing
+       at /nix/store/lr1hfz1srq545rmzpqwaq0f37f7d6mq1-source/modules/qt/nixos.nix:26:48:
+           25|       inherit (config.services.xserver.desktopManager) lxqt;
+           26|       inherit (config.services.desktopManager) gnome plasma6;
+             |                                                ^
+           27|     in
