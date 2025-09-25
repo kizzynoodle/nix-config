@@ -6,5 +6,8 @@
     ./pipewire.nix
     ./user.nix
     ./system.nix
+
+    # Mount filesystems
+    ./ssh.nix
   ];
 }
