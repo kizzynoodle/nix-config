@@ -18,6 +18,7 @@
       # '';
     };
     nixvim = {
+      # TODO: Get it to work
       enable = true;
       plugin = "base16-nvim";
 

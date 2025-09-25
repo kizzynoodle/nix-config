@@ -14,11 +14,11 @@ NixOS system and home manager user configuration managed through flakes.
 ## Nixvim
 
 - [x] CMP autocomplete
-- [ ] Snippet
+- [x] Snippet
 - [ ] Tree menu
 - [ ] Toggle terminal
-- [ ] Remove color from side bar
-  - Remove bg from LSP signs
+- [x] Remove color from side bar
+  - [x] Remove bg from LSP signs
 - [ ] Telescope
 - [x] Nix LSP
 - [x] Latex LSP
@@ -45,23 +45,20 @@ Move following configs to Home Manager directory:
 After configs have been moved:
 
 - [x] Move Hyprland setup to Nix config
-- [ ] Move Waybar setup to Nix config
+- [x] Move Waybar setup to Nix config
 - [ ] Move Mako setup to Nix config
 - [ ] Move Wofi setup to Nix config
 
 Add following features to Hyprland:
 
 - [x] Install and setup screenshot manager
-- [ ] Hyprbar setup
-  - [ ] Make em work
-  - [ ] Window rule to show hyprbar on floating windows
 - [ ] Hyprlock
 - [ ] Power menu
 
 ### Waybar
 
 - [ ] Pipewire controls
-- [ ] Hyprland/workspace on each monitor
+- [x] Hyprland/workspace on each monitor
 - [ ] App menu
 
 ## Pipewire
@@ -69,3 +66,7 @@ Add following features to Hyprland:
 - [x] Fix Discord notification issue
 - [ ] Fix Vesktop having no sound
 - [ ] Add mic system wide noise cancellation
+
+## Thinkpad
+
+- [ ] Fix Thinkpad sound bugging out constantly
