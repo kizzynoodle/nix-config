@@ -13,7 +13,7 @@
 
     # Set colorscheme
     # TODO: Let stylix manage color scheme
-    colorschemes.gruvbox.enable = true;
+    colorschemes.gruvbox.enable = false;
 
     # Set global options
     globals = {

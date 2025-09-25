@@ -16,5 +16,8 @@
     ./git.nix
     ./shell.nix
     ./stylix.nix
+
+    # Mounted file systems
+    ./ssh.nix
   ];
 }
