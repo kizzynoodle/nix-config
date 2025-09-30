@@ -6,6 +6,7 @@
     ./pipewire.nix
     ./user.nix
     ./system.nix
+    ./bluetooth.nix
 
     # Mount filesystems
     ./ssh.nix
