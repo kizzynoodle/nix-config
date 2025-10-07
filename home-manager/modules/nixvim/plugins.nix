@@ -325,7 +325,8 @@
     };
 
     copilot-lua = {
-      enable = true;
+      # TODO: copilot
+      enable = false;
     };
 
     cmp-emoji.enable = true;
@@ -541,7 +542,8 @@
           rust = [ "rustfmt" ];
 
           # All file types
-          "*" = [ "codespell" ];
+          # "*" = [ "codespell" ];
+          # "*" = [ "codespell" ];
         };
         formatters = {
           codespell.command = lib.getExe pkgs.codespell;

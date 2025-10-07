@@ -100,8 +100,8 @@ in
     tex
     pandoc
     python3
+    conda
     nodejs
-    mongodb
     redis
 
     # Formatters

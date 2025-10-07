@@ -125,6 +125,10 @@ in
     bluez
     bluez-tools
 
+    # MongoDB
+    #mongodb
+    #mongosh
+
     # Containers
     docker
     kubernetes
@@ -132,4 +136,7 @@ in
     # Fonts
     nerd-fonts.terminess-ttf
   ];
+
+  services.mongodb.enable = true;
+  services.mongodb.package = pkgs.mongodb-ce;
 }
